@@ -45,7 +45,7 @@ export default function RootLayout({
 					disableTransitionOnChange
 				>
 					<Header />
-					<main className='max-w-screen-md min-h-[85vh] mx-auto p-4'>
+					<main className='max-w-screen-md min-h-[85vh] mx-auto p-4 pb-16'>
 						{children}
 					</main>
 					<Footer />
