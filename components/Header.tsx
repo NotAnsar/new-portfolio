@@ -58,7 +58,8 @@ export default function Header() {
 							>
 								<Link
 									href={n.href}
-									className={`absolute inset-0 hover:-translate-y-[18px] after:content-["${n.label}"] after:absolute after:inset-0 after:translate-y-[18px] after:duration-200 after:transition-all cursor-pointer duration-200 z-50`}
+									className='absolute inset-0 hover:-translate-y-[18px] after:content-[attr(data-label)] after:absolute after:inset-0 after:translate-y-[18px] after:duration-200 after:transition-all cursor-pointer duration-200 z-50'
+									data-label={n.label}
 								>
 									{n.label}
 								</Link>
