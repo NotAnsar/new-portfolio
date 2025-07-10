@@ -57,12 +57,18 @@ export default function page() {
 						required
 					/>
 				</div>
+
 				<Button
+					className='cursor-pointer group w-fit font-bold'
 					size={'lg'}
-					className='w-fit hover:scale-105 transition-transform'
 					type='submit'
 				>
-					Send Message
+					<div className='cursor-pointer relative overflow-hidden'>
+						<div className='absolute inset-0 group-hover:-translate-y-5 after:content-["Send_Message"] after:absolute after:inset-0 after:translate-y-5 after:duration-200 after:transition-all cursor-pointer duration-200 z-50 '>
+							Send Message
+						</div>
+						<span className='opacity-0 z-0'>Send Message</span>
+					</div>
 				</Button>
 			</form>
 

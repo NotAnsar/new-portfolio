@@ -32,10 +32,11 @@ export default function RootLayout({
 	return (
 		<html lang='en' suppressHydrationWarning>
 			<body
+				suppressHydrationWarning
 				className={cn(
 					`${fontSans.variable} ${fontSecondary.variable} antialiased  `,
 
-					'font-secondary bg-gradient-to-tr from-gray-200 via-background to-gray-200 dark:from-background dark:via-primary/40 dark:to-background min-h-screen'
+					'font-secondary bg-gradient-to-tr from-gray-200 via-background to-gray-200 dark:from-background dark:via-primary-background dark:to-background min-h-screen'
 				)}
 			>
 				<ThemeProvider

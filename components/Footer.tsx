@@ -25,35 +25,13 @@ export default function Footer() {
 					>
 						<Linkedin className='h-4 w-4 inline' />
 					</Link>
-					<ModeToggle />
+					<ModeToggle
+						size='sm'
+						className='bg-background/60'
+						variant='outline'
+					/>
 				</nav>
 			</footer>
 		</div>
-	);
-	return (
-		<footer className='py-12 border-t px-2'>
-			<div>
-				<nav className='flex justify-center gap-4 mb-4'>
-					<Link
-						href='http://github.com/NotAnsar'
-						target='_blank'
-						className='hover:text-primary cursor-pointer text-muted-foreground'
-					>
-						<Github className='h-5 w-5 inline' />
-					</Link>
-					<Link
-						href='https://www.linkedin.com/in/ansarkarrouach/'
-						className='hover:text-primary cursor-pointer text-muted-foreground'
-						target='_blank'
-					>
-						<Linkedin className='h-5 w-5 inline' />
-					</Link>
-				</nav>
-
-				<p className='text-center text-muted-foreground text-sm'>
-					© 2025 Ansar's Portfolio. All rights reserved.
-				</p>
-			</div>
-		</footer>
 	);
 }
