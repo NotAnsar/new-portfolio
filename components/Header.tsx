@@ -20,19 +20,14 @@ const navigationItems = [
 	{ href: '/contact', label: 'Contact' },
 ];
 
-const logoClasses =
-	'cursor-pointer hover:opacity-75 transition-all flex items-center gap-2';
-const resumeAnimatedContent = (
-	<div className='cursor-pointer relative overflow-hidden'>
-		<div className='absolute inset-0 group-hover:-translate-y-4 after:content-["Resume"] after:absolute after:inset-0 after:translate-y-4 after:duration-200 after:transition-all cursor-pointer duration-200 z-50'>
-			Resume
-		</div>
-		<span className='opacity-0 z-0'>Resume</span>
-	</div>
-);
-
 const Logo = ({ onClick }: { onClick?: () => void }) => (
-	<Link href='/' className={logoClasses} onClick={onClick}>
+	<Link
+		href='/'
+		className={
+			'cursor-pointer hover:opacity-75 transition-all flex items-center gap-2'
+		}
+		onClick={onClick}
+	>
 		<h3 className='font-bold text-lg'>Ansar's Portfolio</h3>
 	</Link>
 );
@@ -69,7 +64,12 @@ export default function Header() {
 					</ul>
 
 					<Button className='cursor-pointer font-bold group'>
-						{resumeAnimatedContent}
+						<div className='cursor-pointer relative overflow-hidden'>
+							<div className='absolute inset-0 group-hover:-translate-y-4 after:content-["Resume"] after:absolute after:inset-0 after:translate-y-4 after:duration-200 after:transition-all cursor-pointer duration-200 z-50'>
+								Resume
+							</div>
+							<span className='opacity-0 z-0'>Resume</span>
+						</div>
 					</Button>
 				</nav>
 
@@ -130,7 +130,12 @@ export default function Header() {
 							<div className='flex gap-2 items-center'>
 								<SheetClose asChild>
 									<Button className='cursor-pointer font-bold group flex-1'>
-										{resumeAnimatedContent}
+										<div className='cursor-pointer relative overflow-hidden'>
+											<div className='absolute inset-0 group-hover:-translate-y-4 after:content-["Resume"] after:absolute after:inset-0 after:translate-y-4 after:duration-200 after:transition-all cursor-pointer duration-200 z-50'>
+												Resume
+											</div>
+											<span className='opacity-0 z-0'>Resume</span>
+										</div>
 									</Button>
 								</SheetClose>
 								<ModeToggle size='md' className='bg-background/60' />
