@@ -10,7 +10,6 @@ import {
 	Slack,
 	Users2,
 } from 'lucide-react';
-import { title } from 'process';
 import React from 'react';
 
 export default function page() {
@@ -32,7 +31,7 @@ export default function page() {
 							{category.items.map((lang) => (
 								<div
 									key={lang.name}
-									className='flex items-center gap-2 bg-secondary	px-4 py-2.5 rounded-lg border text-foreground'
+									className='flex items-center gap-2 bg-secondary	px-4 py-2.5 rounded-lg border text-foreground hover:bg-secondary/80'
 								>
 									<lang.icon className='w-5 h-auto aspect-square inline-block' />
 									<span className=' font-semibold'>{lang.name}</span>
