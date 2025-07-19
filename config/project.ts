@@ -12,8 +12,10 @@ export type Project = {
 	images?: string[];
 	link?: string;
 	github?: string;
+	frontendRepo?: string;
+	backendRepo?: string;
 	youtube?: string;
-	type: string;
+	type: 'front-end' | 'full-stack';
 };
 export const projects: Project[] = [
 	{
@@ -132,7 +134,56 @@ export const projects: Project[] = [
 		],
 		type: 'front-end',
 	},
-	// old portfolio
+	{
+		title: 'Connectify | Social Media App',
+		description:
+			'Connectify is a social media application developed using React.js, Node.js, SCSS, Express.js, and MySQL as the database.',
+		tags: [
+			'React.js',
+			'Javascipt',
+			'Node.js',
+			'ExpressJS',
+			'MySQL',
+			'SCSS',
+			'MERN Stack',
+		],
+		cover: '/image/connectify/cover.png',
+		images: [
+			'/image/connectify/cover.png',
+			'/image/Connectify/Home.png',
+			'/image/Connectify/Profile.png',
+			'/image/Connectify/Login.png',
+			'/image/Connectify/Chat.png',
+			'/image/Connectify/Setting.png',
+		],
+		youtube: 'https://www.youtube.com/watch?v=M3_dqIESm5Y',
+		frontendRepo: 'https://github.com/NotAnsar/connectify-client',
+		backendRepo: 'https://github.com/NotAnsar/connectify-api',
+		type: 'full-stack',
+	},
+	{
+		title: 'Portfolio V1 | Personal Website',
+		description:
+			'Explore my portfolio v1 website with a sleek dark/light mode switch, built using Next.js, Tailwind CSS, and Shadcn UI, with TypeScript for robustness. Integrated Figma for UI/UX design and Nodemailer for a seamless contact form experience. Discover my work, skills, and experiences in a modern, user-friendly design.',
+		tags: [
+			'Next.js',
+			'TypeScript',
+			'React.js',
+			'Tailwind CSS',
+			'Shadcn/ui',
+			'Nodemailer',
+			'Figma',
+		],
+		cover: '/image/portfolio-v1/cover.png',
+		images: [
+			'/image/portfolio-v1/landing.png',
+			'/image/portfolio-v1/landing_light.png',
+		],
+
+		github: 'https://github.com/NotAnsar/ansar-portfolio',
+		link: 'https://ansar.vercel.app/',
+		type: 'front-end',
+	},
 	// orava
 	// audiospace
 ];

@@ -94,6 +94,35 @@ export default function ProjectCard({ project }: { project: Project }) {
 									View Code
 								</Link>
 							)}
+							{project.frontendRepo && (
+								<Link
+									href={project.frontendRepo}
+									target='_blank'
+									rel='noopener noreferrer'
+									className={cn(
+										buttonVariants({ variant: 'outline', size: 'sm' }),
+										'flex items-center gap-2'
+									)}
+								>
+									<Github className='h-4 w-4' />
+									Frontend
+								</Link>
+							)}
+							{project.backendRepo && (
+								<Link
+									href={project.backendRepo}
+									target='_blank'
+									rel='noopener noreferrer'
+									className={cn(
+										buttonVariants({ variant: 'outline', size: 'sm' }),
+										'flex items-center gap-2'
+									)}
+								>
+									<Github className='h-4 w-4' />
+									Frontend
+								</Link>
+							)}
+
 							{project.youtube && (
 								<Link
 									href={project.youtube}
