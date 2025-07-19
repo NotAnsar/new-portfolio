@@ -10,8 +10,8 @@ export type Project = {
 	tags: string[];
 	cover: string;
 	images?: string[];
-	link: string;
-	github: string;
+	link?: string;
+	github?: string;
 	youtube?: string;
 	type: string;
 };
@@ -41,7 +41,7 @@ export const projects: Project[] = [
 	{
 		title: 'SwapRX | Radiology Replacement Platform',
 		description:
-			'Xcelerate is a tech company landing page developed with Next.js, TypeScript, Tailwind CSS, Framer Motion, and Figma.',
+			'SwapRx is a healthcare recruitment platform frontend for the radiology sector, built with Next.js, TypeScript, React.js, Tailwind CSS, Shadcn/ui, React Hook Form, and Axios. It includes features like job listings, user registration, calendar views, document uploads, and an interactive map powered by Google Maps. DocuSeal integration enables seamless contract generation and electronic signatures.',
 		tags: [
 			'Next.js',
 			'TypeScript',
@@ -70,8 +70,6 @@ export const projects: Project[] = [
 			'/image/swaprx/contracts.png',
 			'/image/swaprx/agenda.png',
 		],
-		link: 'http://xcelerate.vercel.app/',
-		github: 'https://github.com/NotAnsar/xcelerate',
 		type: 'front-end',
 	},
 	{
@@ -91,21 +89,25 @@ export const projects: Project[] = [
 		cover: '/image/cadency/cover.png',
 		images: [
 			'/image/cadency/cover.png',
-			'/image/cadency/1.png',
-			'/image/cadency/2.png',
-			'/image/cadency/3.png',
-			'/image/cadency/4.png',
-			'/image/cadency/5.png',
-			'/image/cadency/6.png',
+			'/image/cadency/landing.png',
+			'/image/cadency/landing_light.png',
+			'/image/cadency/HomeDark.png',
+			'/image/cadency/HomeLight.png',
+			'/image/cadency/artist.png',
+			'/image/cadency/album.png',
+			'/image/cadency/search.png',
+			'/image/cadency/setting.png',
+			'/image/cadency/Sign_in.png',
 		],
-		link: 'http://xcelerate.vercel.app/',
-		github: 'https://github.com/NotAnsar/xcelerate',
+		youtube: 'https://www.youtube.com/watch?v=rZtQ6qjDk0I',
+		link: 'https://cadency-music.vercel.app/',
+		github: 'http://github.com/NotAnsar/cadency',
 		type: 'full-stack',
 	},
 	{
 		title: 'AgroApp | SaaS for food traceability',
 		description:
-			'Cadency is a music platform developed using cutting-edge technology, including Next.js 14, Tailwind CSS, and Shadcn UI for styling, Prisma with a PostgreSQL database, and NextAuth for authentication.',
+			'AgroApp is the frontend of a web application for hygiene and food traceability in the agri-food sector. Built with React, Next.js, TypeScript, Tailwind CSS, Axios, and Nodemailer, it offers a responsive and intuitive interface for managing temperature logs, cleaning schedules, checklists, labeling, and real-time dashboards—designed for professionals like restaurants, caterers, and food retailers.',
 		tags: [
 			'Next.js',
 			'TypeScript',
@@ -118,64 +120,19 @@ export const projects: Project[] = [
 		],
 		cover: '/image/agro/cover.png',
 		images: [
-			'/image/cadency/cover.png',
-			'/image/cadency/1.png',
-			'/image/cadency/2.png',
-			'/image/cadency/3.png',
-			'/image/cadency/4.png',
-			'/image/cadency/5.png',
-			'/image/cadency/6.png',
+			'/image/agro/cover.png',
+			'/image/agro/landing.png',
+			'/image/agro/landing_light.png',
+			'/image/agro/login.png',
+			'/image/agro/register.png',
+			'/image/agro/dashboard.png',
+			'/image/agro/dashboard_light.png',
+			'/image/agro/page.png',
+			'/image/agro/page_light.png',
 		],
-		link: 'http://xcelerate.vercel.app/',
-		github: 'https://github.com/NotAnsar/xcelerate',
 		type: 'front-end',
 	},
-	// {
-	// 	title: 'E-commerce Platform',
-	// 	description:
-	// 		'A full-stack e-commerce platform built with Next.js, Tailwind CSS, and MongoDB.',
-	// 	tags: ['Next.js', 'Tailwind CSS', 'MongoDB'],
-	// 	image: '/projects/ecommerce.png',
-	// 	link: 'https://my-ecommerce.com',
-	// 	github: 'https://github.com/username/ecommerce',
-	// 	type: 'front-end',
-	// },
-	// {
-	// 	title: 'Blog Website',
-	// 	description: 'A personal blog website built with Next.js and Tailwind CSS.',
-	// 	tags: ['Next.js', 'Tailwind CSS'],
-	// 	image: '/projects/blog.png',
-	// 	link: 'https://my-blog.com',
-	// 	github: 'https://github.com/username/blog',
-	// 	type: 'full-stack',
-	// },
-	// {
-	// 	title: 'Portfolio Website',
-	// 	description:
-	// 		'A personal portfolio website built with Next.js and Tailwind CSS.',
-	// 	tags: ['Next.js', 'Tailwind CSS'],
-	// 	image: '/projects/portfolio.png',
-	// 	link: 'https://my-portfolio.com',
-	// 	github: 'https://github.com/username/portfolio',
-	// 	type: 'front-end',
-	// },
-	// {
-	// 	title: 'E-commerce Platform',
-	// 	description:
-	// 		'A full-stack e-commerce platform built with Next.js, Tailwind CSS, and MongoDB.',
-	// 	tags: ['Next.js', 'Tailwind CSS', 'MongoDB'],
-	// 	image: '/projects/ecommerce.png',
-	// 	link: 'https://my-ecommerce.com',
-	// 	github: 'https://github.com/username/ecommerce',
-	// 	type: 'front-end',
-	// },
-	// {
-	// 	title: 'Blog Website',
-	// 	description: 'A personal blog website built with Next.js and Tailwind CSS.',
-	// 	tags: ['Next.js', 'Tailwind CSS'],
-	// 	image: '/projects/blog.png',
-	// 	link: 'https://my-blog.com',
-	// 	github: 'https://github.com/username/blog',
-	// 	type: 'full-stack',
-	// },
+	// old portfolio
+	// orava
+	// audiospace
 ];
