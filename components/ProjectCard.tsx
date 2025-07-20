@@ -50,7 +50,7 @@ export default function ProjectCard({ project }: { project: Project }) {
 				{/* <aside className='grid md:grid-cols-3 gap-6 overflow-y-scroll'> */}
 				<aside className='grid md:grid-cols-3 gap-6 '>
 					<div className='col-span-1 space-y-3 md:sticky md:top-0 md:self-start'>
-						<p className='text-base text-muted-foreground'>
+						<p className='text-base text-muted-foreground whitespace-pre-line'>
 							{project.description}
 						</p>
 						<div className='flex flex-wrap gap-2'>

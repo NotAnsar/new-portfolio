@@ -19,28 +19,6 @@ export type Project = {
 };
 export const projects: Project[] = [
 	{
-		title: 'Xcelerate | Tech Landing Page',
-		description:
-			'Xcelerate is a tech company landing page developed with Next.js, TypeScript, Tailwind CSS, Framer Motion, and Figma.',
-		tags: [
-			'Next.js',
-			'TypeScript',
-			'React.js',
-			'Tailwind CSS',
-			'Framer Motion',
-			'Figma',
-		],
-		cover: '/image/xcelerate/cover.png',
-		images: [
-			'/image/xcelerate/cover.png',
-			'/image/xcelerate/1.png',
-			'/image/xcelerate/2.png',
-		],
-		link: 'http://xcelerate.vercel.app/',
-		github: 'https://github.com/NotAnsar/xcelerate',
-		type: 'front-end',
-	},
-	{
 		title: 'SwapRX | Radiology Replacement Platform',
 		description:
 			'SwapRx is a healthcare recruitment platform frontend for the radiology sector, built with Next.js, TypeScript, React.js, Tailwind CSS, Shadcn/ui, React Hook Form, and Axios. It includes features like job listings, user registration, calendar views, document uploads, and an interactive map powered by Google Maps. DocuSeal integration enables seamless contract generation and electronic signatures.',
@@ -74,6 +52,81 @@ export const projects: Project[] = [
 		],
 		type: 'front-end',
 	},
+	{
+		title: 'Orava | E-commerce Dashboard with AI Assistant',
+		description:
+			'An intelligent e-commerce dashboard featuring AI-powered analytics, inventory management, sales tracking, and automated insights. Designed to streamline business operations with modern UI/UX principles.',
+		tags: [
+			'Spring Boot',
+			'Next.js',
+			'React.js',
+			'Java',
+			'TypeScript',
+			'AWS S3',
+			'Tailwind CSS',
+			'Shadcn/ui',
+			'Axios',
+			'AI ADK',
+			'Chart.js',
+		],
+		cover: '/image/orava/login.png',
+		images: [
+			'/image/orava/home.png',
+			'/image/orava/analytics.png',
+			'/image/orava/user.png',
+			'/image/orava/categories.png',
+			'/image/orava/products.png',
+			'/image/orava/add_product.png',
+			'/image/orava/order_details.png',
+			'/image/orava/login_dark.png',
+			'/image/orava/order_list.png',
+			'/image/orava/kanban.png',
+			'/image/orava/calendar.png',
+		],
+		backendRepo: 'https://github.com/NotAnsar/orava-api/',
+		frontendRepo: 'https://github.com/NotAnsar/orava-front/',
+		type: 'full-stack',
+	},
+	{
+		title: 'AudioSpace | Music Streaming Platform',
+		description:
+			'AudioSpace is a music-focused web platform with integrated learning features. It delivers curated audio-based courses through a clean, minimalist interface, with a strong focus on performance and accessibility.\nIt includes a full LMS for structured learning and is built using Next.js, TypeScript, ShadCN UI, Prisma, and PostgreSQL, with Amazon S3 for efficient file uploads and audio storage.',
+		tags: [
+			'Next.js',
+			'TypeScript',
+			'S3 Bucket',
+			'Tailwind CSS',
+			'Shadcn/ui',
+			'Prisma',
+			'PostgreSQL',
+			'Next Auth',
+		],
+		cover: '/image/audiospace/login.png',
+		images: [
+			'/image/audiospace/home.png',
+			'/image/audiospace/tracks.png',
+			'/image/audiospace/artists.png',
+			'/image/audiospace/courses.png',
+			'/image/audiospace/courses_details.png',
+			'/image/audiospace/curated.png',
+			'/image/audiospace/curated_details.png',
+			'/image/audiospace/genres.png',
+			'/image/audiospace/login.png',
+
+			'/image/audiospace/artist_tracks.png',
+			'/image/audiospace/track_details.png',
+			'/image/audiospace/help_center.png',
+			'/image/audiospace/followed.png',
+			'/image/audiospace/liked.png',
+			'/image/audiospace/my_learning.png',
+			'/image/audiospace/about.png',
+			'/image/audiospace/legal.png',
+			'/image/audiospace/support_us.png',
+		],
+		link: 'https://audiospace.soundingfuture.com/',
+		type: 'full-stack',
+	},
+
 	{
 		title: 'Cadency | Music Web App',
 		description:
@@ -162,6 +215,28 @@ export const projects: Project[] = [
 		type: 'full-stack',
 	},
 	{
+		title: 'Xcelerate | Tech Landing Page',
+		description:
+			'Xcelerate is a tech company landing page developed with Next.js, TypeScript, Tailwind CSS, Framer Motion, and Figma.',
+		tags: [
+			'Next.js',
+			'TypeScript',
+			'React.js',
+			'Tailwind CSS',
+			'Framer Motion',
+			'Figma',
+		],
+		cover: '/image/xcelerate/cover.png',
+		images: [
+			'/image/xcelerate/cover.png',
+			'/image/xcelerate/1.png',
+			'/image/xcelerate/2.png',
+		],
+		link: 'http://xcelerate.vercel.app/',
+		github: 'https://github.com/NotAnsar/xcelerate',
+		type: 'front-end',
+	},
+	{
 		title: 'Portfolio V1 | Personal Website',
 		description:
 			'Explore my portfolio v1 website with a sleek dark/light mode switch, built using Next.js, Tailwind CSS, and Shadcn UI, with TypeScript for robustness. Integrated Figma for UI/UX design and Nodemailer for a seamless contact form experience. Discover my work, skills, and experiences in a modern, user-friendly design.',
@@ -184,41 +259,4 @@ export const projects: Project[] = [
 		link: 'https://ansar.vercel.app/',
 		type: 'front-end',
 	},
-	{
-		title: 'Orava | E-commerce Dashboard with AI Assistant',
-		description:
-			'An intelligent e-commerce dashboard featuring AI-powered analytics, inventory management, sales tracking, and automated insights. Designed to streamline business operations with modern UI/UX principles.',
-		tags: [
-			'Spring Boot',
-			'Next.js',
-			'React.js',
-			'Java',
-			'TypeScript',
-			'AWS S3',
-			'Tailwind CSS',
-			'Shadcn/ui',
-			'Axios',
-			'AI ADK',
-			'Chart.js',
-		],
-		cover: '/image/orava/login.png',
-		images: [
-			'/image/orava/home.png',
-			'/image/orava/analytics.png',
-			'/image/orava/user.png',
-			'/image/orava/categories.png',
-			'/image/orava/products.png',
-			'/image/orava/add_product.png',
-			'/image/orava/order_details.png',
-			'/image/orava/login_dark.png',
-			'/image/orava/order_list.png',
-			'/image/orava/kanban.png',
-			'/image/orava/calendar.png',
-		],
-		backendRepo: 'https://github.com/NotAnsar/orava-api/',
-		frontendRepo: 'https://github.com/NotAnsar/orava-front/',
-		type: 'full-stack',
-	},
 ];
-// orava
-// audiospace
