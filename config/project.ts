@@ -169,6 +169,7 @@ export const projects: Project[] = [
 			'Next.js',
 			'TypeScript',
 			'React.js',
+			'Framer Motion',
 			'Tailwind CSS',
 			'Shadcn/ui',
 			'Nodemailer',
@@ -179,11 +180,45 @@ export const projects: Project[] = [
 			'/image/portfolio-v1/landing.png',
 			'/image/portfolio-v1/landing_light.png',
 		],
-
 		github: 'https://github.com/NotAnsar/ansar-portfolio',
 		link: 'https://ansar.vercel.app/',
 		type: 'front-end',
 	},
-	// orava
-	// audiospace
+	{
+		title: 'Orava | E-commerce Dashboard with AI Assistant',
+		description:
+			'An intelligent e-commerce dashboard featuring AI-powered analytics, inventory management, sales tracking, and automated insights. Designed to streamline business operations with modern UI/UX principles.',
+		tags: [
+			'Spring Boot',
+			'Next.js',
+			'React.js',
+			'Java',
+			'TypeScript',
+			'AWS S3',
+			'Tailwind CSS',
+			'Shadcn/ui',
+			'Axios',
+			'AI ADK',
+			'Chart.js',
+		],
+		cover: '/image/orava/login.png',
+		images: [
+			'/image/orava/home.png',
+			'/image/orava/analytics.png',
+			'/image/orava/user.png',
+			'/image/orava/categories.png',
+			'/image/orava/products.png',
+			'/image/orava/add_product.png',
+			'/image/orava/order_details.png',
+			'/image/orava/login_dark.png',
+			'/image/orava/order_list.png',
+			'/image/orava/kanban.png',
+			'/image/orava/calendar.png',
+		],
+		backendRepo: 'https://github.com/NotAnsar/orava-api/',
+		frontendRepo: 'https://github.com/NotAnsar/orava-front/',
+		type: 'full-stack',
+	},
 ];
+// orava
+// audiospace
