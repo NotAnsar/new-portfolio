@@ -8,6 +8,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { cn } from '@/lib/utils';
+import { Toaster } from 'sonner';
 
 const fontSans = FontSans({
 	subsets: ['latin'],
@@ -48,6 +49,7 @@ export default function RootLayout({
 					<Header />
 					<main className='max-w-screen-md min-h-[85vh] mx-auto p-4 pb-16'>
 						{children}
+						<Toaster className='bg-red-800' />
 					</main>
 					<Footer />
 				</ThemeProvider>
