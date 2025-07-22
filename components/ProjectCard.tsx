@@ -11,6 +11,7 @@ import {
 import { ExternalLink, Github, Youtube } from 'lucide-react';
 import Image from 'next/image';
 import { Project } from '@/config/project';
+import { Badge } from './ui/badge';
 
 export default function ProjectCard({ project }: { project: Project }) {
 	return (
@@ -29,14 +30,12 @@ export default function ProjectCard({ project }: { project: Project }) {
 					<p className='text-xs text-muted-foreground line-clamp-2'>
 						{project.description}
 					</p>
-					<div className='mt-2'>
+
+					<div className='flex gap-x-2 gap-y-1 flex-wrap mt-2'>
 						{project.tags.map((tag) => (
-							<span
-								key={tag}
-								className='inline-block bg-muted text-muted-foreground rounded-full px-2 py-1 text-[10px] font-semibold mr-2'
-							>
+							<Badge key={tag} variant='secondary' className='text-[10px]'>
 								{tag}
-							</span>
+							</Badge>
 						))}
 					</div>
 				</div>
@@ -47,7 +46,6 @@ export default function ProjectCard({ project }: { project: Project }) {
 						{project.title}
 					</DialogTitle>
 				</DialogHeader>
-				{/* <aside className='grid md:grid-cols-3 gap-6 overflow-y-scroll'> */}
 				<aside className='grid md:grid-cols-3 gap-6 '>
 					<div className='col-span-1 space-y-3 md:sticky md:top-0 md:self-start'>
 						<p className='text-base text-muted-foreground whitespace-pre-line'>
@@ -64,7 +62,7 @@ export default function ProjectCard({ project }: { project: Project }) {
 							))}
 						</div>
 
-						<div className='flex gap-3 pt-4'>
+						<div className='flex gap-3 pt-4 flex-wrap'>
 							{project.link && (
 								<Link
 									href={project.link}

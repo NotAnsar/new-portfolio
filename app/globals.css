@@ -93,6 +93,8 @@
 	/* --primary: oklch(0.922 0 0); */
 	/* --primary: oklch(31.158% 0.00555 55.983); */
 	--primary: oklch(33.958% 0.02583 74.011);
+	--primary: oklch(44.5% 0.05 74.011);
+
 	--primary-background: oklch(24.657% 0.00959 67.296);
 
 	--primary-foreground: oklch(0.985 0 0);

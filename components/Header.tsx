@@ -63,13 +63,15 @@ export default function Header() {
 						))}
 					</ul>
 
-					<Button className='cursor-pointer font-bold group'>
-						<div className='cursor-pointer relative overflow-hidden'>
-							<div className='absolute inset-0 group-hover:-translate-y-4 after:content-["Resume"] after:absolute after:inset-0 after:translate-y-4 after:duration-200 after:transition-all cursor-pointer duration-200 z-50'>
-								Resume
+					<Button asChild className='cursor-pointer font-bold group'>
+						<Link href='/resume.pdf' target='_blank' rel='noopener noreferrer'>
+							<div className='cursor-pointer relative overflow-hidden'>
+								<div className='absolute inset-0 group-hover:-translate-y-4 after:content-["Resume"] after:absolute after:inset-0 after:translate-y-4 after:duration-200 after:transition-all cursor-pointer duration-200 z-50'>
+									Resume
+								</div>
+								<span className='opacity-0 z-0'>Resume</span>
 							</div>
-							<span className='opacity-0 z-0'>Resume</span>
-						</div>
+						</Link>
 					</Button>
 				</nav>
 
@@ -128,7 +130,7 @@ export default function Header() {
 							))}
 
 							<div className='flex gap-2 items-center'>
-								<SheetClose asChild>
+								{/* <SheetClose asChild>
 									<Button className='cursor-pointer font-bold group flex-1'>
 										<div className='cursor-pointer relative overflow-hidden'>
 											<div className='absolute inset-0 group-hover:-translate-y-4 after:content-["Resume"] after:absolute after:inset-0 after:translate-y-4 after:duration-200 after:transition-all cursor-pointer duration-200 z-50'>
@@ -136,6 +138,25 @@ export default function Header() {
 											</div>
 											<span className='opacity-0 z-0'>Resume</span>
 										</div>
+									</Button>
+								</SheetClose> */}
+								<SheetClose asChild>
+									<Button
+										asChild
+										className='cursor-pointer font-bold group flex-1'
+									>
+										<Link
+											href='/resume.pdf'
+											target='_blank'
+											rel='noopener noreferrer'
+										>
+											<div className='cursor-pointer relative overflow-hidden'>
+												<div className='absolute inset-0 group-hover:-translate-y-4 after:content-["Resume"] after:absolute after:inset-0 after:translate-y-4 after:duration-200 after:transition-all cursor-pointer duration-200 z-50'>
+													Resume
+												</div>
+												<span className='opacity-0 z-0'>Resume</span>
+											</div>
+										</Link>
 									</Button>
 								</SheetClose>
 								<ModeToggle size='md' className='bg-background/60' />

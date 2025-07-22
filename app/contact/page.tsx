@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { cn } from '@/lib/utils';
 import { Github, Linkedin, Mail } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
@@ -76,8 +77,13 @@ export default function page() {
 				<h4 className='text-xl font-semibold mt-6 mb-3'>Contact Information</h4>
 				<div className='space-y-4'>
 					{contactInfo.map((info) => (
-						<div className='flex items-center gap-3 ' key={info.label}>
-							<span className='w-12 h-auto aspect-square flex items-center justify-center bg-secondary rounded-sm'>
+						<div className='flex items-center gap-3 group' key={info.label}>
+							<span
+								className={cn(
+									'w-12 h-auto aspect-square flex items-center justify-center bg-muted-foreground dark:bg-secondary rounded-sm',
+									'bg-card border border-border'
+								)}
+							>
 								<info.icon className='w-5 h-auto aspect-square inline-block' />
 							</span>
 							<div className='flex flex-col'>

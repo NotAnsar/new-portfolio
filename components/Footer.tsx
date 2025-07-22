@@ -5,7 +5,7 @@ import { ModeToggle } from './ModeToggle';
 
 export default function Footer() {
 	return (
-		<div className='border-t border-primary w-full'>
+		<div className='border-t-2 w-full'>
 			<footer className='max-w-screen-md mx-auto flex items-center justify-between p-2 '>
 				<h3 className='text-[15px] font-medium'>
 					made by <span className='text-primary font-bold'>ansar</span>
