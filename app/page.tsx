@@ -300,9 +300,8 @@ export default function Home() {
 			{/* Hero Section with Circle Gradient */}
 			<section className='relative flex flex-col items-center text-center space-y-8 py-16'>
 				{/* Circle Gradient Background */}
-				{/* <div className='w-96 h-40 bg-primary/80 absolute blur-[130px] rounded-full -z-10 -translate-x-14 -translate-y-10' /> */}
 
-				<div className='w-96 h-40 bg-primary absolute blur-[136px] rounded-full -z-10 -translate-x-14 -translate-y-10' />
+				{/* <div className='w-96 h-40 bg-primary absolute blur-[136px] rounded-full -z-10 -translate-x-14 -translate-y-10' /> */}
 
 				<div className='w-24 h-24 rounded-full bg-primary/10 border border-primary/20 mb-4 flex items-center justify-center'>
 					<span className='text-2xl text-primary font-bold'>AK</span>
