@@ -37,7 +37,7 @@ export default function Header() {
 		<div
 			className={cn(
 				'border-b w-full sticky top-0 z-50 font-secondary',
-				'ease-in-out backdrop-blur-sm animate-header-slide-down-fade'
+				'ease-in-out backdrop-blur-3xl animate-header-slide-down-fade'
 			)}
 		>
 			<header className='max-w-screen-md mx-auto flex items-center justify-between py-2 px-4'>
@@ -73,6 +73,7 @@ export default function Header() {
 							</div>
 						</Link>
 					</Button>
+					<ModeToggle size='md' />
 				</nav>
 
 				{/* Mobile Navigation */}
@@ -130,16 +131,6 @@ export default function Header() {
 							))}
 
 							<div className='flex gap-2 items-center'>
-								{/* <SheetClose asChild>
-									<Button className='cursor-pointer font-bold group flex-1'>
-										<div className='cursor-pointer relative overflow-hidden'>
-											<div className='absolute inset-0 group-hover:-translate-y-4 after:content-["Resume"] after:absolute after:inset-0 after:translate-y-4 after:duration-200 after:transition-all cursor-pointer duration-200 z-50'>
-												Resume
-											</div>
-											<span className='opacity-0 z-0'>Resume</span>
-										</div>
-									</Button>
-								</SheetClose> */}
 								<SheetClose asChild>
 									<Button
 										asChild
