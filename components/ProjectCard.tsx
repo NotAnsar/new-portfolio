@@ -117,7 +117,7 @@ export default function ProjectCard({ project }: { project: Project }) {
 									)}
 								>
 									<Github className='h-4 w-4' />
-									Frontend
+									Backend
 								</Link>
 							)}
 

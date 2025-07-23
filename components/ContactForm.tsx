@@ -22,7 +22,7 @@ export function ContactForm() {
 			toast.success(state.message || 'Message sent successfully!', {
 				unstyled: true,
 				className:
-					'text-foreground dark:bg-secondary border-input flex rounded-md border p-3 shadow-xs text-[13px] gap-2 font-semibold w-fit items-center ',
+					'text-foreground bg-white dark:bg-secondary border-input flex rounded-md border p-3 shadow-xs text-[13px] gap-2 font-semibold w-fit items-center ',
 			});
 			formRef.current?.reset();
 		}
