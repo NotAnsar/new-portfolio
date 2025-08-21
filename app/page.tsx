@@ -15,6 +15,7 @@ import Link from 'next/link';
 import { education, experiences, featuredSkills } from '@/config/home';
 import ProjectCard from '@/components/ProjectCard';
 import { projects } from '@/config/project';
+import Image from 'next/image';
 
 export default function Home() {
 	const featuredProjects = projects.slice(0, 4);
@@ -24,8 +25,17 @@ export default function Home() {
 			<section className='relative flex flex-col items-center text-center space-y-8 py-16'>
 				{/* Circle Gradient Background */}
 
-				<div className='w-24 h-24 rounded-full bg-primary/10 border border-primary/20 mb-4 flex items-center justify-center'>
+				{/* <div className='w-24 h-24 rounded-full bg-primary/10 border border-primary/20 mb-4 flex items-center justify-center'>
 					<span className='text-2xl text-primary font-bold'>AK</span>
+				</div> */}
+				<div className='w-32 h-32 rounded-full overflow-hidden border border-primary/20 mb-4'>
+					<Image
+						src='/image/pic2.jpg'
+						alt='Ansar Karrouach'
+						className='w-full h-full object-cover '
+						width={413}
+						height={477}
+					/>
 				</div>
 
 				<div className='space-y-4 max-w-2xl'>
@@ -109,7 +119,7 @@ export default function Home() {
 							<MapPin className='h-4 w-4 text-primary' />
 							<span className='font-medium text-sm'>Location</span>
 						</div>
-						<p className='text-muted-foreground text-sm'>Settat, Morocco</p>
+						<p className='text-muted-foreground text-sm'>Casablanca, Morocco</p>
 					</div>
 
 					<div className='bg-secondary/50 rounded-lg p-4 space-y-2'>
