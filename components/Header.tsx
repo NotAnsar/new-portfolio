@@ -64,7 +64,11 @@ export default function Header() {
 					</ul>
 
 					<Button asChild className='cursor-pointer font-bold group'>
-						<Link href='/resume.pdf' target='_blank' rel='noopener noreferrer'>
+						<Link
+							href='/Karrouach_ansar_cv.pdf'
+							target='_blank'
+							rel='noopener noreferrer'
+						>
 							<div className='cursor-pointer relative overflow-hidden'>
 								<div className='absolute inset-0 group-hover:-translate-y-4 after:content-["Resume"] after:absolute after:inset-0 after:translate-y-4 after:duration-200 after:transition-all cursor-pointer duration-200 z-50'>
 									Resume
@@ -137,7 +141,7 @@ export default function Header() {
 										className='cursor-pointer font-bold group flex-1'
 									>
 										<Link
-											href='/resume.pdf'
+											href='/Karrouach_ansar_cv.pdf'
 											target='_blank'
 											rel='noopener noreferrer'
 										>

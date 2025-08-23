@@ -59,7 +59,11 @@ export default function Home() {
 						</Link>
 					</Button>
 					<Button variant='outline' size='lg' asChild>
-						<Link href='/resume.pdf' target='_blank' rel='noopener noreferrer'>
+						<Link
+							href='/Karrouach_ansar_cv.pdf'
+							target='_blank'
+							rel='noopener noreferrer'
+						>
 							<Download className='mr-2 h-4 w-4' />
 							Resume
 						</Link>
