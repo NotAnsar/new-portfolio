@@ -51,6 +51,7 @@ export const projects: Project[] = [
 			'/image/swaprx/agenda.png',
 		],
 		type: 'front-end',
+		link: 'https://www.swapsante.online/',
 	},
 	{
 		title: 'Orava | E-commerce Dashboard with AI Assistant',
