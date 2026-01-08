@@ -30,7 +30,7 @@ export default function Home() {
 				</div> */}
 				<div className='w-32 h-32 rounded-full overflow-hidden border border-primary/20 mb-4'>
 					<Image
-						src='/image/pic2.jpg'
+						src='/image/pic2.jpeg'
 						alt='Ansar Karrouach'
 						className='w-full h-full object-cover '
 						width={413}
