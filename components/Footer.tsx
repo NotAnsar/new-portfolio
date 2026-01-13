@@ -1,37 +1,86 @@
-import { Github, Linkedin } from 'lucide-react';
+import { Github, Linkedin, Mail } from 'lucide-react';
 import Link from 'next/link';
-import React from 'react';
 import { ModeToggle } from './ModeToggle';
+
+const footerLinks = [
+	{ href: '/', label: 'Home' },
+	{ href: '/projects', label: 'Projects' },
+	{ href: '/skills', label: 'Skills' },
+	{ href: '/contact', label: 'Contact' },
+];
+
+const socialLinks = [
+	{ href: 'mailto:karrouach.ansar@gmail.com', icon: Mail, label: 'Email' },
+	{ href: 'https://github.com/NotAnsar', icon: Github, label: 'GitHub' },
+	{
+		href: 'https://linkedin.com/in/ansarkarrouach/',
+		icon: Linkedin,
+		label: 'LinkedIn',
+	},
+];
 
 export default function Footer() {
 	return (
-		<div className='border-t-2 w-full'>
-			<footer className='max-w-screen-md mx-auto flex items-center justify-between p-2 '>
-				<h3 className='text-[15px] font-medium'>
-					made by <span className='text-primary font-bold'>ansar</span>
-				</h3>
-				<nav className='flex justify-center gap-4 '>
-					<Link
-						href='http://github.com/NotAnsar'
-						target='_blank'
-						className='hover:text-primary cursor-pointer text-muted-foreground'
-					>
-						<Github className='h-4 w-4 inline' />
-					</Link>
-					<Link
-						href='https://www.linkedin.com/in/ansarkarrouach/'
-						className='hover:text-primary cursor-pointer text-muted-foreground'
-						target='_blank'
-					>
-						<Linkedin className='h-4 w-4 inline' />
-					</Link>
-					<ModeToggle
-						size='sm'
-						className='bg-background/60'
-						variant='outline'
-					/>
-				</nav>
-			</footer>
-		</div>
+		<footer className='border-t'>
+			<div className='max-w-screen-lg mx-auto px-4 py-12'>
+				<div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
+					{/* Brand */}
+					<div className='space-y-4'>
+						<Link href='/' className='text-lg font-bold tracking-tight'>
+							AK
+						</Link>
+						<p className='text-sm text-muted-foreground leading-relaxed'>
+							Full Stack Developer building scalable web applications with
+							modern technologies.
+						</p>
+					</div>
+
+					{/* Links */}
+					<div className='space-y-4'>
+						<p className='text-sm font-medium'>Pages</p>
+						<nav className='flex flex-col gap-2'>
+							{footerLinks.map((link) => (
+								<Link
+									key={link.label}
+									href={link.href}
+									className='text-sm text-muted-foreground hover:text-foreground transition-colors w-fit'
+								>
+									{link.label}
+								</Link>
+							))}
+						</nav>
+					</div>
+
+					{/* Social */}
+					<div className='space-y-4'>
+						<p className='text-sm font-medium'>Connect</p>
+						<div className='flex items-center gap-3'>
+							{socialLinks.map((social) => (
+								<Link
+									key={social.label}
+									href={social.href}
+									target='_blank'
+									className='p-2 border rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors'
+									aria-label={social.label}
+								>
+									<social.icon className='h-4 w-4' />
+								</Link>
+							))}
+							<ModeToggle size='sm' variant='outline' />
+						</div>
+					</div>
+				</div>
+
+				{/* Bottom */}
+				<div className='flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 mt-8 border-t'>
+					<p className='text-sm text-muted-foreground'>
+						© {new Date().getFullYear()} Ansar Karrouach. All rights reserved.
+					</p>
+					<p className='text-sm text-muted-foreground'>
+						Built with Next.js & Tailwind CSS
+					</p>
+				</div>
+			</div>
+		</footer>
 	);
 }

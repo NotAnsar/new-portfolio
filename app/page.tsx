@@ -13,6 +13,7 @@ import { education, experiences, featuredSkills } from '@/config/home';
 import ProjectCard from '@/components/ProjectCard';
 import { projects } from '@/config/project';
 import Image from 'next/image';
+import { cn } from '@/lib/utils';
 
 export default function Home() {
 	const featuredProjects = projects.slice(0, 4);
@@ -86,8 +87,15 @@ export default function Home() {
 								height={477}
 							/>
 						</div>
-						<div className='absolute -bottom-4 -left-4 bg-background border rounded-lg px-4 py-2 shadow-sm'>
-							<p className='text-sm font-medium'>Based in Casablanca 🇲🇦</p>
+						<div
+							className={cn(
+								'absolute -bottom-4 -left-4 border rounded-lg px-4 py-2 shadow-sm',
+								'border shadow-xs hover:text-accent-foreground bg-secondary hover:bg-secondary/95 dark:bg-secondary dark:border-input dark:hover:bg-secondary/95 duration-300 cursor-pointer'
+							)}
+						>
+							<span className={cn('text-sm font-medium ')}>
+								Based in Casablanca 🇲🇦
+							</span>
 						</div>
 					</div>
 				</div>

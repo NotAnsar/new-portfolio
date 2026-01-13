@@ -11,41 +11,71 @@ export default async function page({
 }) {
 	const { tab } = await searchParams;
 
+	const filteredProjects = projects.filter(
+		(project) => !tab || tab === 'all' || project.type === tab
+	);
+
 	return (
-		<>
-			<h3 className='font-bold text-3xl'>Projects</h3>
-			<p className='text-muted-foreground'>
-				A selection of my recent work, showcasing my skills in web development
-				and design.
-			</p>
+		<div className='space-y-12 pb-16'>
+			{/* Header */}
+			<section className='space-y-6 pt-8'>
+				<div className='space-y-4 max-w-2xl'>
+					<p className='text-sm uppercase tracking-widest text-muted-foreground'>
+						Portfolio
+					</p>
+					<h1 className='text-4xl md:text-5xl font-bold tracking-tight'>
+						Projects
+					</h1>
+					<p className='text-lg text-muted-foreground leading-relaxed'>
+						A selection of my recent work, showcasing my skills in web
+						development and design.
+					</p>
+				</div>
+			</section>
 
-			<div className='flex items-center gap-2 mt-4'>
-				{tabs.map(({ value, label }) => (
-					<Link
-						key={value}
-						className={cn(
-							'cursor-pointer group relative overflow-hidden font-semibold',
-							buttonVariants({
-								size: 'sm',
-								variant: (tab || 'all') === value ? 'default' : 'outline',
-							}),
-							'border-0'
-						)}
-						href={`/projects?tab=${value}`}
-						data-label={label}
-					>
-						{label}
-					</Link>
-				))}
-			</div>
+			{/* Filters */}
+			<section>
+				<div className='flex items-baseline justify-between mb-6'>
+					<h2 className='text-sm uppercase tracking-widest text-muted-foreground'>
+						Filter by type
+					</h2>
+					<div className='h-px flex-1 bg-border ml-8' />
+				</div>
 
-			<div className='mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4'>
-				{projects
-					.filter((project) => !tab || tab === 'all' || project.type === tab)
-					.map((project, i) => (
+				<div className='flex flex-wrap items-center gap-2'>
+					{tabs.map(({ value, label }) => (
+						<Link
+							key={value}
+							className={cn(
+								'px-4 py-2 rounded-full text-sm transition-colors',
+								(tab || 'all') === value
+									? 'bg-foreground text-background'
+									: 'border hover:bg-secondary'
+							)}
+							href={`/projects?tab=${value}`}
+						>
+							{label}
+						</Link>
+					))}
+				</div>
+			</section>
+
+			{/* Projects Grid */}
+			<section>
+				<div className='flex items-baseline justify-between mb-6'>
+					<h2 className='text-sm uppercase tracking-widest text-muted-foreground'>
+						{filteredProjects.length}{' '}
+						{filteredProjects.length === 1 ? 'Project' : 'Projects'}
+					</h2>
+					<div className='h-px flex-1 bg-border ml-8' />
+				</div>
+
+				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+					{filteredProjects.map((project, i) => (
 						<ProjectCard project={project} key={i} />
 					))}
-			</div>
-		</>
+				</div>
+			</section>
+		</div>
 	);
 }
