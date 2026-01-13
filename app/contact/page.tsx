@@ -1,8 +1,9 @@
 import { ContactForm } from '@/components/ContactForm';
-import { Github, Linkedin, Mail, MapPin, ArrowUpRight } from 'lucide-react';
+import { MapPin, ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
+import { socialLinks } from '@/config/navigation';
 
-export default function page() {
+export default function Page() {
 	return (
 		<div className='space-y-12 pb-16'>
 			{/* Header */}
@@ -87,23 +88,4 @@ export default function page() {
 	);
 }
 
-const contactInfo = [
-	{
-		icon: Mail,
-		label: 'Email',
-		value: 'karrouach.ansar@gmail.com',
-		href: 'mailto:karrouach.ansar@gmail.com',
-	},
-	{
-		icon: Linkedin,
-		label: 'LinkedIn',
-		value: 'linkedin.com/in/ansarkarrouach',
-		href: 'https://linkedin.com/in/ansarkarrouach/',
-	},
-	{
-		icon: Github,
-		label: 'GitHub',
-		value: 'github.com/NotAnsar',
-		href: 'https://github.com/NotAnsar',
-	},
-];
+const contactInfo = socialLinks;

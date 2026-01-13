@@ -1,8 +1,7 @@
 import React from 'react';
 import { Button } from './ui/button';
 import Link from 'next/link';
-import { cn } from '@/lib/utils';
-import { Menu, X, Download } from 'lucide-react';
+import { Menu, Download } from 'lucide-react';
 import {
 	Sheet,
 	SheetClose,
@@ -13,13 +12,7 @@ import {
 	SheetTrigger,
 } from './ui/sheet';
 import { ModeToggle } from './ModeToggle';
-
-const navigationItems = [
-	{ href: '/', label: 'Home' },
-	{ href: '/projects', label: 'Projects' },
-	{ href: '/skills', label: 'Skills' },
-	{ href: '/contact', label: 'Contact' },
-];
+import { navigationItems } from '@/config/navigation';
 
 const Logo = ({ onClick }: { onClick?: () => void }) => (
 	<Link

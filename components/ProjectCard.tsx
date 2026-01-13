@@ -16,7 +16,11 @@ export default function ProjectCard({ project }: { project: Project }) {
 	return (
 		<Dialog>
 			<DialogTrigger asChild>
-				<div className='group cursor-pointer border rounded-lg overflow-hidden hover:border-foreground/20 transition-colors'>
+				<div
+					className='group cursor-pointer border rounded-lg overflow-hidden hover:border-foreground/20 transition-colors'
+					role='button'
+					aria-label={`View details for ${project.title}`}
+				>
 					<div className='overflow-hidden'>
 						<Image
 							src={project.cover}
@@ -192,6 +196,8 @@ export default function ProjectCard({ project }: { project: Project }) {
 									className='w-full object-cover rounded-lg border'
 									width={1366}
 									height={768}
+									loading='lazy'
+									sizes='(max-width: 768px) 100vw, 66vw'
 								/>
 							))}
 						</div>

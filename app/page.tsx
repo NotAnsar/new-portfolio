@@ -3,15 +3,15 @@ import { Badge } from '@/components/ui/badge';
 import {
 	ArrowRight,
 	Download,
-	Github,
-	Linkedin,
-	Mail,
 	ExternalLink,
+	Mail,
+	Linkedin,
 } from 'lucide-react';
 import Link from 'next/link';
 import { education, experiences, featuredSkills } from '@/config/home';
 import ProjectCard from '@/components/ProjectCard';
 import { projects } from '@/config/project';
+import { socialLinks, siteStats } from '@/config/navigation';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 
@@ -53,26 +53,17 @@ export default function Home() {
 					</div>
 
 					<div className='flex items-center gap-4 pt-4'>
-						<Link
-							href='mailto:karrouach.ansar@gmail.com'
-							className='text-muted-foreground hover:text-foreground transition-colors'
-						>
-							<Mail className='h-5 w-5' />
-						</Link>
-						<Link
-							href='https://linkedin.com/in/ansarkarrouach'
-							target='_blank'
-							className='text-muted-foreground hover:text-foreground transition-colors'
-						>
-							<Linkedin className='h-5 w-5' />
-						</Link>
-						<Link
-							href='https://github.com/NotAnsar'
-							target='_blank'
-							className='text-muted-foreground hover:text-foreground transition-colors'
-						>
-							<Github className='h-5 w-5' />
-						</Link>
+						{socialLinks.map((social) => (
+							<Link
+								key={social.label}
+								href={social.href}
+								target={social.href.startsWith('mailto') ? undefined : '_blank'}
+								className='text-muted-foreground hover:text-foreground transition-colors'
+								aria-label={social.label}
+							>
+								<social.icon className='h-5 w-5' />
+							</Link>
+						))}
 					</div>
 				</div>
 
@@ -127,13 +118,15 @@ export default function Home() {
 					</div>
 					<div className='space-y-4'>
 						<div className='border rounded-lg p-4 space-y-1'>
-							<p className='text-3xl font-bold'>2+</p>
+							<p className='text-3xl font-bold'>{siteStats.yearsExperience}</p>
 							<p className='text-sm text-muted-foreground'>
 								Years of Experience
 							</p>
 						</div>
 						<div className='border rounded-lg p-4 space-y-1'>
-							<p className='text-3xl font-bold'>8+</p>
+							<p className='text-3xl font-bold'>
+								{siteStats.projectsCompleted}
+							</p>
 							<p className='text-sm text-muted-foreground'>
 								Projects Completed
 							</p>

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import ProjectCard from '@/components/ProjectCard';
 import { projects, tabs } from '@/config/project';
 
-export default async function page({
+export default async function Page({
 	searchParams,
 }: {
 	searchParams: Promise<{ [key: string]: string | string[] | undefined }>;

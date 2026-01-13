@@ -1,23 +1,6 @@
-import { Github, Linkedin, Mail } from 'lucide-react';
 import Link from 'next/link';
 import { ModeToggle } from './ModeToggle';
-
-const footerLinks = [
-	{ href: '/', label: 'Home' },
-	{ href: '/projects', label: 'Projects' },
-	{ href: '/skills', label: 'Skills' },
-	{ href: '/contact', label: 'Contact' },
-];
-
-const socialLinks = [
-	{ href: 'mailto:karrouach.ansar@gmail.com', icon: Mail, label: 'Email' },
-	{ href: 'https://github.com/NotAnsar', icon: Github, label: 'GitHub' },
-	{
-		href: 'https://linkedin.com/in/ansarkarrouach/',
-		icon: Linkedin,
-		label: 'LinkedIn',
-	},
-];
+import { navigationItems, socialLinks } from '@/config/navigation';
 
 export default function Footer() {
 	return (
@@ -39,7 +22,7 @@ export default function Footer() {
 					<div className='space-y-4'>
 						<p className='text-sm font-medium'>Pages</p>
 						<nav className='flex flex-col gap-2'>
-							{footerLinks.map((link) => (
+							{navigationItems.map((link) => (
 								<Link
 									key={link.label}
 									href={link.href}

@@ -1,4 +1,5 @@
 import { skillCategories } from '@/config/skills';
+import { siteStats } from '@/config/navigation';
 
 export default function SkillsPage() {
 	return (
@@ -63,11 +64,11 @@ export default function SkillsPage() {
 						<p className='text-sm text-muted-foreground'>Categories</p>
 					</div>
 					<div className='text-center space-y-1'>
-						<p className='text-3xl font-bold'>2+</p>
+						<p className='text-3xl font-bold'>{siteStats.yearsExperience}</p>
 						<p className='text-sm text-muted-foreground'>Years Experience</p>
 					</div>
 					<div className='text-center space-y-1'>
-						<p className='text-3xl font-bold'>8+</p>
+						<p className='text-3xl font-bold'>{siteStats.projectsCompleted}</p>
 						<p className='text-sm text-muted-foreground'>Projects Built</p>
 					</div>
 				</div>
