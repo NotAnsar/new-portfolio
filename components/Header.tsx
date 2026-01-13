@@ -66,7 +66,7 @@ export default function Header() {
 
 				{/* Mobile Navigation */}
 				<div className='flex sm:hidden items-center gap-2'>
-					<ModeToggle size='sm' />
+					<ModeToggle size='sm' variant='ghost' />
 					<Sheet>
 						<SheetTrigger asChild>
 							<Button variant='ghost' size='icon' className='h-9 w-9'>
@@ -80,17 +80,13 @@ export default function Header() {
 										<Logo />
 									</SheetClose>
 								</SheetTitle>
-								<SheetClose asChild>
-									<Button variant='ghost' size='icon' className='h-8 w-8'>
-										<X className='h-4 w-4' />
-									</Button>
-								</SheetClose>
+
 								<SheetDescription className='sr-only'>
 									Navigation menu
 								</SheetDescription>
 							</SheetHeader>
 
-							<nav className='flex flex-col gap-1 py-6'>
+							<nav className='flex flex-col gap-1 py-6 mx-2'>
 								{navigationItems.map((n) => (
 									<SheetClose asChild key={n.label}>
 										<Link
@@ -103,19 +99,21 @@ export default function Header() {
 								))}
 							</nav>
 
-							<div className='pt-6 border-t'>
-								<SheetClose asChild>
-									<Button asChild className='w-full'>
-										<Link
-											href='/Karrouach_ansar_cv.pdf'
-											target='_blank'
-											rel='noopener noreferrer'
-										>
-											<Download className='mr-2 h-4 w-4' />
-											Download Resume
-										</Link>
-									</Button>
-								</SheetClose>
+							<div className='pt-6 border-t '>
+								<div className='mx-2'>
+									<SheetClose asChild>
+										<Button asChild className='w-full'>
+											<Link
+												href='/Karrouach_ansar_cv.pdf'
+												target='_blank'
+												rel='noopener noreferrer'
+											>
+												<Download className='mr-2 h-4 w-4' />
+												Download Resume
+											</Link>
+										</Button>
+									</SheetClose>
+								</div>
 							</div>
 						</SheetContent>
 					</Sheet>
