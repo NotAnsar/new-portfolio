@@ -6,10 +6,7 @@ import {
 	Github,
 	Linkedin,
 	Mail,
-	Calendar,
-	MapPin,
-	GraduationCap,
-	Briefcase,
+	ExternalLink,
 } from 'lucide-react';
 import Link from 'next/link';
 import { education, experiences, featuredSkills } from '@/config/home';
@@ -20,190 +17,182 @@ import Image from 'next/image';
 export default function Home() {
 	const featuredProjects = projects.slice(0, 4);
 	return (
-		<div className='space-y-16'>
-			{/* Hero Section with Circle Gradient */}
-			<section className='relative flex flex-col items-center text-center space-y-8 py-16'>
-				{/* Circle Gradient Background */}
+		<div className='space-y-32 pb-16'>
+			{/* Hero - Split Layout */}
+			<section className='grid md:grid-cols-2 gap-12 items-center min-h-[70vh] pt-8'>
+				<div className='space-y-8 order-2 md:order-1'>
+					<div className='space-y-4'>
+						<p className='text-sm uppercase tracking-widest text-muted-foreground'>
+							Full Stack Developer
+						</p>
+						<h1 className='text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1]'>
+							Ansar
+							<br />
+							Karrouach
+						</h1>
+						<p className='text-lg text-muted-foreground max-w-md leading-relaxed'>
+							Building scalable web applications with modern technologies.
+							Currently pursuing a Master's in Big Data & IoT.
+						</p>
+					</div>
 
-				{/* <div className='w-24 h-24 rounded-full bg-primary/10 border border-primary/20 mb-4 flex items-center justify-center'>
-					<span className='text-2xl text-primary font-bold'>AK</span>
-				</div> */}
-				<div className='w-32 h-32 rounded-full overflow-hidden border border-primary/20 mb-4'>
-					<Image
-						src='/image/pic2.jpeg'
-						alt='Ansar Karrouach'
-						className='w-full h-full object-cover '
-						width={413}
-						height={477}
-					/>
-				</div>
+					<div className='flex flex-wrap gap-3'>
+						<Button asChild size='lg'>
+							<Link href='/projects'>
+								View Projects
+								<ArrowRight className='ml-2 h-4 w-4' />
+							</Link>
+						</Button>
+						<Button variant='outline' size='lg' asChild>
+							<Link href='/Karrouach_ansar_cv.pdf' target='_blank'>
+								<Download className='mr-2 h-4 w-4' />
+								Download CV
+							</Link>
+						</Button>
+					</div>
 
-				<div className='space-y-4 max-w-2xl'>
-					<h1 className='text-4xl md:text-5xl font-bold tracking-tight'>
-						Hi, I'm <span className='text-primary'>Ansar Karrouach</span>
-					</h1>
-					<h2 className='text-xl md:text-2xl text-muted-foreground font-medium'>
-						Full Stack Developer
-					</h2>
-					<p className='text-muted-foreground leading-relaxed'>
-						I build scalable web applications with React, Next.js, and Spring
-						Boot. Currently pursuing a Master's in Big Data and IoT.
-					</p>
-				</div>
-
-				<div className='flex items-center gap-4'>
-					<Button asChild size='lg' className='group'>
-						<Link href='/projects'>
-							View Work
-							<ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
-						</Link>
-					</Button>
-					<Button variant='outline' size='lg' asChild>
+					<div className='flex items-center gap-4 pt-4'>
 						<Link
-							href='/Karrouach_ansar_cv.pdf'
-							target='_blank'
-							rel='noopener noreferrer'
+							href='mailto:karrouach.ansar@gmail.com'
+							className='text-muted-foreground hover:text-foreground transition-colors'
 						>
-							<Download className='mr-2 h-4 w-4' />
-							Resume
+							<Mail className='h-5 w-5' />
 						</Link>
-					</Button>
+						<Link
+							href='https://linkedin.com/in/ansarkarrouach'
+							target='_blank'
+							className='text-muted-foreground hover:text-foreground transition-colors'
+						>
+							<Linkedin className='h-5 w-5' />
+						</Link>
+						<Link
+							href='https://github.com/NotAnsar'
+							target='_blank'
+							className='text-muted-foreground hover:text-foreground transition-colors'
+						>
+							<Github className='h-5 w-5' />
+						</Link>
+					</div>
 				</div>
 
-				<div className='flex items-center gap-4 pt-4'>
-					<Link
-						href='mailto:karrouach.ansar@gmail.com'
-						className='p-2 rounded-lg hover:bg-secondary transition-colors'
-					>
-						<Mail className='h-5 w-5' />
-					</Link>
-					<Link
-						href='https://linkedin.com/in/ansarkarrouach'
-						target='_blank'
-						className='p-2 rounded-lg hover:bg-secondary transition-colors'
-					>
-						<Linkedin className='h-5 w-5' />
-					</Link>
-					<Link
-						href='https://github.com/NotAnsar'
-						target='_blank'
-						className='p-2 rounded-lg hover:bg-secondary transition-colors'
-					>
-						<Github className='h-5 w-5' />
-					</Link>
+				<div className='order-1 md:order-2 flex justify-center md:justify-end'>
+					<div className='relative'>
+						<div className='w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-2xl overflow-hidden'>
+							<Image
+								src='/image/pic2.jpeg'
+								alt='Ansar Karrouach'
+								className='w-full h-full object-cover'
+								width={413}
+								height={477}
+							/>
+						</div>
+						<div className='absolute -bottom-4 -left-4 bg-background border rounded-lg px-4 py-2 shadow-sm'>
+							<p className='text-sm font-medium'>Based in Casablanca 🇲🇦</p>
+						</div>
+					</div>
 				</div>
 			</section>
 
-			{/* About Section */}
+			{/* About - Bento Style */}
 			<section className='space-y-8'>
-				<h3 className='text-2xl font-bold'>About Me</h3>
-
-				{/* Main About Content */}
-				<div className='rounded-lg space-y-4'>
-					<p className='text-muted-foreground leading-relaxed text-base'>
-						I'm a passionate full-stack developer currently pursuing a Master's
-						in Big Data and IoT. I specialize in building scalable applications
-						with modern frontends and robust Java backends, with expertise in
-						API development, PostgreSQL, AWS, and agile workflows.
-					</p>
-					<p className='text-muted-foreground leading-relaxed text-base'>
-						I'm passionate about transitioning into DevOps or advancing in
-						full-stack development with Spring Boot. I excel in API integration,
-						performance optimization, and collaborative agile environments.
-					</p>
-					<Button asChild variant='outline' className='w-fit '>
-						<Link href='/contact'>Get In Touch</Link>
-					</Button>
+				<div className='flex items-baseline justify-between'>
+					<h2 className='text-sm uppercase tracking-widest text-muted-foreground'>
+						About
+					</h2>
+					<div className='h-px flex-1 bg-border ml-8' />
 				</div>
 
-				{/* Quick Facts Grid */}
-				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
-					<div className='bg-secondary/50 rounded-lg p-4 space-y-2'>
-						<div className='flex items-center gap-2'>
-							<MapPin className='h-4 w-4 text-primary' />
-							<span className='font-medium text-sm'>Location</span>
-						</div>
-						<p className='text-muted-foreground text-sm'>Casablanca, Morocco</p>
-					</div>
-
-					<div className='bg-secondary/50 rounded-lg p-4 space-y-2'>
-						<div className='flex items-center gap-2'>
-							<GraduationCap className='h-4 w-4 text-primary' />
-							<span className='font-medium text-sm'>Education</span>
-						</div>
-						<p className='text-muted-foreground text-sm'>
-							Master's in Big Data & IoT
+				<div className='grid md:grid-cols-3 gap-6'>
+					<div className='md:col-span-2 space-y-4'>
+						<p className='text-lg leading-relaxed'>
+							I'm a passionate full-stack developer with expertise in building
+							scalable applications using React, Next.js, and Spring Boot. I
+							specialize in creating modern frontends and robust backends.
+						</p>
+						<p className='text-muted-foreground leading-relaxed'>
+							Currently pursuing my Master's in Big Data and IoT at ENSAM
+							Casablanca, I'm focused on expanding into DevOps while
+							strengthening my full-stack capabilities. I thrive in
+							collaborative environments and enjoy solving complex technical
+							challenges.
 						</p>
 					</div>
-
-					<div className='bg-secondary/50 rounded-lg p-4 space-y-2'>
-						<div className='flex items-center gap-2'>
-							<Briefcase className='h-4 w-4 text-primary' />
-							<span className='font-medium text-sm'>Experience</span>
+					<div className='space-y-4'>
+						<div className='border rounded-lg p-4 space-y-1'>
+							<p className='text-3xl font-bold'>2+</p>
+							<p className='text-sm text-muted-foreground'>
+								Years of Experience
+							</p>
 						</div>
-						<p className='text-muted-foreground text-sm'>
-							2+ Years Development
-						</p>
+						<div className='border rounded-lg p-4 space-y-1'>
+							<p className='text-3xl font-bold'>8+</p>
+							<p className='text-sm text-muted-foreground'>
+								Projects Completed
+							</p>
+						</div>
 					</div>
 				</div>
 			</section>
 
-			{/* Featured Projects Section */}
-			<section className='space-y-6'>
-				<div className='flex items-center justify-between'>
-					<h3 className='text-2xl font-bold'>Featured Projects</h3>
-					<Button asChild variant='ghost'>
-						<Link href='/projects'>
-							View All
-							<ArrowRight className='ml-2 h-4 w-4' />
-						</Link>
-					</Button>
+			{/* Projects */}
+			<section className='space-y-8'>
+				<div className='flex items-baseline justify-between'>
+					<h2 className='text-sm uppercase tracking-widest text-muted-foreground'>
+						Featured Work
+					</h2>
+					<div className='h-px flex-1 bg-border mx-8' />
+					<Link
+						href='/projects'
+						className='text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1'
+					>
+						View All <ArrowRight className='h-3 w-3' />
+					</Link>
 				</div>
 
-				<div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+				<div className='grid md:grid-cols-2 gap-6'>
 					{featuredProjects.map((project, index) => (
 						<ProjectCard project={project} key={index} />
 					))}
 				</div>
 			</section>
 
-			{/* Experience Section */}
-			<section className='space-y-6'>
-				<div className='flex items-center gap-2'>
-					<Briefcase className='h-6 w-6 text-primary' />
-					<h3 className='text-2xl font-bold'>Experience</h3>
+			{/* Experience */}
+			<section className='space-y-8'>
+				<div className='flex items-baseline justify-between'>
+					<h2 className='text-sm uppercase tracking-widest text-muted-foreground'>
+						Experience
+					</h2>
+					<div className='h-px flex-1 bg-border ml-8' />
 				</div>
-				<div className='space-y-6'>
+
+				<div className='space-y-0 divide-y'>
 					{experiences.map((exp, index) => (
 						<div
 							key={index}
-							className='border-l-2 border-primary/20 pl-6 pb-6 last:pb-0'
+							className='grid md:grid-cols-[1fr_2fr] gap-4 py-8 first:pt-0 last:pb-0'
 						>
-							<div className='bg-card dark:bg-secondary/20 dark:border rounded-lg p-6 shadow-sm'>
-								<div className='flex flex-col md:flex-row md:items-center md:justify-between mb-3'>
-									<div>
-										<h4 className='text-lg font-bold'>{exp.title}</h4>
-										<p className='text-primary font-semibold'>{exp.company}</p>
-									</div>
-									<div className='flex items-center gap-4 text-sm text-muted-foreground mt-2 md:mt-0'>
-										<div className='flex items-center gap-1'>
-											<Calendar className='h-4 w-4' />
-											{exp.period}
-										</div>
-										<div className='flex items-center gap-1'>
-											<MapPin className='h-4 w-4' />
-											{exp.location}
-										</div>
-									</div>
+							<div>
+								<p className='font-medium'>{exp.company}</p>
+								<p className='text-sm text-muted-foreground'>{exp.period}</p>
+							</div>
+							<div className='space-y-3'>
+								<div>
+									<h3 className='font-medium'>{exp.title}</h3>
+									<p className='text-sm text-muted-foreground'>
+										{exp.location}
+									</p>
 								</div>
-								<p className='text-muted-foreground leading-relaxed mb-3'>
+								<p className='text-sm text-muted-foreground leading-relaxed'>
 									{exp.description}
 								</p>
 								<div className='flex flex-wrap gap-2'>
 									{exp.technologies.map((tech) => (
-										<Badge key={tech} variant='outline' className='text-xs'>
+										<span
+											key={tech}
+											className='text-xs text-muted-foreground bg-secondary px-2 py-1 rounded'
+										>
 											{tech}
-										</Badge>
+										</span>
 									))}
 								</div>
 							</div>
@@ -212,84 +201,94 @@ export default function Home() {
 				</div>
 			</section>
 
-			{/* Education Section */}
-			<section className='space-y-6'>
-				<div className='flex items-center gap-2'>
-					<GraduationCap className='h-6 w-6 text-primary' />
-					<h3 className='text-2xl font-bold'>Education</h3>
+			{/* Education */}
+			<section className='space-y-8'>
+				<div className='flex items-baseline justify-between'>
+					<h2 className='text-sm uppercase tracking-widest text-muted-foreground'>
+						Education
+					</h2>
+					<div className='h-px flex-1 bg-border ml-8' />
 				</div>
-				<div className='space-y-4'>
+
+				<div className='space-y-0 divide-y'>
 					{education.map((edu, index) => (
 						<div
 							key={index}
-							className='bg-card dark:bg-secondary/20 dark:border rounded-lg p-6 shadow-sm'
+							className='grid md:grid-cols-[1fr_2fr] gap-4 py-8 first:pt-0 last:pb-0'
 						>
-							<div className='flex flex-col md:flex-row md:items-center md:justify-between mb-3 gap-1'>
-								<div>
-									<h4 className='text-lg font-bold'>{edu.degree}</h4>
-									<p className='text-primary font-semibold'>
-										{edu.institution}
-									</p>
-								</div>
-								<div className='flex items-center gap-4 text-sm text-muted-foreground mt-2 md:mt-0 text-nowrap'>
-									<div className='flex items-center gap-1'>
-										<Calendar className='h-4 w-4' />
-										{edu.period}
-									</div>
-									<div className='flex items-center gap-1 text-nowrap'>
-										<MapPin className='h-4 w-4' />
-										{edu.location}
-									</div>
-								</div>
+							<div>
+								<p className='font-medium'>{edu.institution}</p>
+								<p className='text-sm text-muted-foreground'>{edu.period}</p>
 							</div>
-							{edu.description && (
-								<p className='text-muted-foreground leading-relaxed mb-3'>
-									{edu.description}
-								</p>
-							)}
+							<div className='space-y-2'>
+								<h3 className='font-medium'>{edu.degree}</h3>
+								<p className='text-sm text-muted-foreground'>{edu.location}</p>
+								{edu.description && (
+									<p className='text-sm text-muted-foreground leading-relaxed'>
+										{edu.description}
+									</p>
+								)}
+							</div>
 						</div>
 					))}
 				</div>
 			</section>
 
-			{/* Skills Preview */}
-			<section className='space-y-6'>
-				<div className='flex items-center justify-between'>
-					<h3 className='text-2xl font-bold'>Skills & Technologies</h3>
-					<Button asChild variant='ghost'>
-						<Link href='/skills'>
-							View All Skills
-							<ArrowRight className='ml-2 h-4 w-4' />
-						</Link>
-					</Button>
+			{/* Skills */}
+			<section className='space-y-8'>
+				<div className='flex items-baseline justify-between'>
+					<h2 className='text-sm uppercase tracking-widest text-muted-foreground'>
+						Tech Stack
+					</h2>
+					<div className='h-px flex-1 bg-border mx-8' />
+					<Link
+						href='/skills'
+						className='text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1'
+					>
+						View All <ArrowRight className='h-3 w-3' />
+					</Link>
 				</div>
-				<div className='flex flex-wrap gap-2'>
+
+				<div className='flex flex-wrap gap-3'>
 					{featuredSkills.map((skill) => (
-						<Badge
+						<span
 							key={skill}
-							variant='secondary'
-							className='px-3 py-1 bg-white dark:bg-secondary border border-border'
+							className='px-4 py-2 border rounded-full text-sm hover:bg-secondary transition-colors'
 						>
 							{skill}
-						</Badge>
+						</span>
 					))}
 				</div>
 			</section>
 
-			{/* CTA Section */}
-			<section className='text-center space-y-6 py-12 bg-white/40 dark:bg-secondary/30 rounded-lg border px-3'>
-				<h3 className='text-2xl font-bold'>Let's Work Together</h3>
-				<p className='text-muted-foreground max-w-md mx-auto'>
-					I'm always interested in new opportunities and exciting projects.
-					Let's discuss how we can bring your ideas to life.
-				</p>
-				<div className='flex flex-wrap items-center justify-center gap-4'>
-					<Button asChild size='lg'>
-						<Link href='/contact'>Start a Project</Link>
-					</Button>
-					<Button asChild variant='outline' size='lg'>
-						<Link href='/projects'>See My Work</Link>
-					</Button>
+			{/* CTA */}
+			<section className='border rounded-2xl p-8 md:p-12'>
+				<div className='max-w-2xl mx-auto text-center space-y-6'>
+					<h2 className='text-3xl md:text-4xl font-bold'>
+						Let's build something great together
+					</h2>
+					<p className='text-muted-foreground'>
+						I'm currently open to new opportunities and interesting projects.
+						Whether you have a question or just want to say hi, I'll get back to
+						you!
+					</p>
+					<div className='flex flex-wrap justify-center gap-3 pt-2'>
+						<Button asChild size='lg'>
+							<Link href='/contact'>
+								<Mail className='mr-2 h-4 w-4' />
+								Get in Touch
+							</Link>
+						</Button>
+						<Button variant='outline' size='lg' asChild>
+							<Link
+								href='https://linkedin.com/in/ansarkarrouach'
+								target='_blank'
+							>
+								<Linkedin className='mr-2 h-4 w-4' />
+								Connect on LinkedIn
+							</Link>
+						</Button>
+					</div>
 				</div>
 			</section>
 		</div>
