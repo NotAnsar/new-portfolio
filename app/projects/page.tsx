@@ -1,81 +1,43 @@
-import { buttonVariants } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
 import Link from 'next/link';
-import ProjectCard from '@/components/ProjectCard';
+import SiteHeader from '@/components/SiteHeader';
+import SiteFooter from '@/components/SiteFooter';
+import ParticleBackground from '@/components/ParticleBackground';
+import ProjectsIndex from '@/components/ProjectsIndex';
 import { projects, tabs } from '@/config/project';
 
-export default async function Page({
-	searchParams,
-}: {
-	searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-}) {
-	const { tab } = await searchParams;
+export const metadata = {
+	title: 'Projects | Ansar Karrouach',
+	description:
+		'A selection of my recent work in web development: Next.js, TypeScript, and full-stack applications.',
+};
 
-	const filteredProjects = projects.filter(
-		(project) => !tab || tab === 'all' || project.type === tab
-	);
-
+export default function Page() {
 	return (
-		<div className='space-y-12 pb-16'>
-			{/* Header */}
-			<section className='space-y-6 pt-8'>
-				<div className='space-y-4 max-w-2xl'>
-					<p className='text-sm uppercase tracking-widest text-muted-foreground'>
-						Portfolio
-					</p>
-					<h1 className='text-4xl md:text-5xl font-bold tracking-tight'>
-						Projects
-					</h1>
-					<p className='text-lg text-muted-foreground leading-relaxed'>
-						A selection of my recent work, showcasing my skills in web
-						development and design.
-					</p>
-				</div>
-			</section>
+		<div className='min-h-screen bg-background text-foreground overflow-x-hidden'>
+			<ParticleBackground
+				particleCount={350}
+				particleOpacity={0.45}
+				wirePosition={[-8, -2, -4]}
+			/>
 
-			{/* Filters */}
-			<section>
-				<div className='flex items-baseline justify-between mb-6'>
-					<h2 className='text-sm uppercase tracking-widest text-muted-foreground'>
-						Filter by type
-					</h2>
-					<div className='h-px flex-1 bg-border ml-8' />
-				</div>
+			<div className='relative z-[1]'>
+				<SiteHeader />
 
-				<div className='flex flex-wrap items-center gap-2'>
-					{tabs.map(({ value, label }) => (
+				<ProjectsIndex projects={projects} tabs={tabs} />
+
+				{/* CTA + shared footer */}
+				<section className='px-6 sm:px-10 pb-[72px]'>
+					<div className='max-w-[1280px] mx-auto'>
 						<Link
-							key={value}
-							className={cn(
-								'px-4 py-2 rounded-full text-sm transition-colors',
-								(tab || 'all') === value
-									? 'bg-foreground text-background'
-									: 'border hover:bg-secondary'
-							)}
-							href={`/projects?tab=${value}`}
+							href='/#contact'
+							className='inline-block text-[clamp(36px,6vw,80px)] font-bold tracking-[-0.04em] leading-none text-foreground no-underline border-b-[3px] border-(--ds-accent-btn) pb-2.5 transition-colors duration-300 hover:text-(--ds-accent-bright)'
 						>
-							{label}
+							START A PROJECT ↗
 						</Link>
-					))}
-				</div>
-			</section>
-
-			{/* Projects Grid */}
-			<section>
-				<div className='flex items-baseline justify-between mb-6'>
-					<h2 className='text-sm uppercase tracking-widest text-muted-foreground'>
-						{filteredProjects.length}{' '}
-						{filteredProjects.length === 1 ? 'Project' : 'Projects'}
-					</h2>
-					<div className='h-px flex-1 bg-border ml-8' />
-				</div>
-
-				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
-					{filteredProjects.map((project, i) => (
-						<ProjectCard project={project} key={i} />
-					))}
-				</div>
-			</section>
+					</div>
+				</section>
+				<SiteFooter />
+			</div>
 		</div>
 	);
 }

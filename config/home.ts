@@ -81,3 +81,42 @@ export const education = [
 ];
 
 export const favoriteStack = ['React', 'Next.js', 'TypeScript', 'Spring Boot'];
+
+/** Compact experience rows for the landing page (Landing Minimal design) */
+export const jobs = [
+	{
+		period: 'Feb 2026 - Jun 2026',
+		role: 'Software Engineer Intern',
+		company: 'VOID Digital Agency',
+		place: 'Casablanca',
+		stack: 'Next.js · Playwright · CI/CD',
+	},
+	{
+		period: 'Oct 2024 - May 2026',
+		role: 'Full Stack Developer, Freelance',
+		company: 'Sounding Future',
+		place: 'Remote',
+		stack: 'Next.js · Prisma · Docker',
+	},
+	{
+		period: 'Jun 2024 - Oct 2024',
+		role: 'Frontend Developer Intern',
+		company: 'Devti Technologie',
+		place: 'Tanger',
+		stack: 'Next.js · ShadCN · REST',
+	},
+	{
+		period: 'Apr 2023 - Jul 2023',
+		role: 'Frontend Developer Intern',
+		company: 'NJT Group',
+		place: 'Marrakech',
+		stack: 'React · Express · Socket.io',
+	},
+];
+
+/** Landing page stat counters */
+export const landingStats = [
+	{ target: 3, label: 'Years experience' },
+	{ target: 10, label: 'Projects completed' },
+	{ target: 4, label: 'Companies' },
+];

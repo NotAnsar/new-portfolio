@@ -1,297 +1,260 @@
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import {
-	ArrowRight,
-	Download,
-	ExternalLink,
-	Mail,
-	Linkedin,
-} from 'lucide-react';
 import Link from 'next/link';
-import { education, experiences, featuredSkills } from '@/config/home';
-import ProjectCard from '@/components/ProjectCard';
+import SiteHeader from '@/components/SiteHeader';
+import SiteFooter from '@/components/SiteFooter';
+import ParticleBackground from '@/components/ParticleBackground';
+import LandingEffects from '@/components/LandingEffects';
+import SelectedWork from '@/components/SelectedWork';
 import { projects } from '@/config/project';
-import { socialLinks, siteStats } from '@/config/navigation';
-import Image from 'next/image';
-import { cn } from '@/lib/utils';
+import { jobs, landingStats } from '@/config/home';
+
+const sectionLabel = (num: string, label: string) => (
+	<div className='reveal flex items-baseline gap-4 mb-16'>
+		<span className='text-[13px] text-(--ds-accent) tracking-[0.2em]'>
+			{num}
+		</span>
+		<h2 className='m-0 text-[15px] tracking-[0.25em] uppercase font-medium text-(--ds-muted)'>
+			{label}
+		</h2>
+	</div>
+);
 
 export default function Home() {
-	const featuredProjects = projects.slice(0, 4);
+	const featured = projects.slice(0, 4);
+	const projectCount = String(projects.length).padStart(2, '0');
+
 	return (
-		<div className='space-y-32 pb-16'>
-			{/* Hero - Split Layout */}
-			<section className='grid md:grid-cols-2 gap-12 items-center min-h-[70vh] pt-8'>
-				<div className='space-y-8 order-2 md:order-1'>
-					<div className='space-y-4'>
-						<p className='text-sm uppercase tracking-widest text-muted-foreground'>
-							Full Stack Developer
-						</p>
-						<h1 className='text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1]'>
-							Ansar
-							<br />
-							Karrouach
-						</h1>
-						<p className='text-lg text-muted-foreground max-w-md leading-relaxed'>
-							Building scalable web applications with modern technologies.
-							Currently pursuing a Master's in Big Data & IoT.
-						</p>
-					</div>
+		<div className='min-h-screen bg-background text-foreground overflow-x-hidden'>
+			<ParticleBackground
+				particleCount={500}
+				particleOpacity={0.55}
+				wirePosition={[8, 1, -4]}
+			/>
+			<LandingEffects />
 
-					<div className='flex flex-wrap gap-3'>
-						<Button asChild size='lg'>
-							<Link href='/projects'>
-								View Projects
-								<ArrowRight className='ml-2 h-4 w-4' />
-							</Link>
-						</Button>
-						<Button variant='outline' size='lg' asChild>
-							<Link href='/Karrouach_ansar_cv.pdf' target='_blank'>
-								<Download className='mr-2 h-4 w-4' />
-								Download CV
-							</Link>
-						</Button>
-					</div>
+			<div className='relative z-[1]'>
+				<SiteHeader />
 
-					<div className='flex items-center gap-4 pt-4'>
-						{socialLinks.map((social) => (
-							<Link
-								key={social.label}
-								href={social.href}
-								target={social.href.startsWith('mailto') ? undefined : '_blank'}
-								className='text-muted-foreground hover:text-foreground transition-colors'
-								aria-label={social.label}
-							>
-								<social.icon className='h-5 w-5' />
-							</Link>
-						))}
-					</div>
-				</div>
-
-				<div className='order-1 md:order-2 flex justify-center md:justify-end'>
-					<div className='relative'>
-						<div className='w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-2xl overflow-hidden'>
-							<Image
-								src='/image/pic2.jpeg'
-								alt='Ansar Karrouach'
-								className='w-full h-full object-cover'
-								width={413}
-								height={477}
-							/>
+				{/* Hero: full-viewport typographic */}
+				<section className='min-h-screen flex flex-col justify-center px-6 sm:px-10 relative'>
+					<div className='max-w-[1280px] mx-auto w-full flex flex-col items-center text-center'>
+						<div className='overflow-hidden'>
+							<div className='hero-line flex items-center gap-3.5 mb-7'>
+								<span className='w-9 h-px bg-(--ds-accent)' />
+								<p className='m-0 text-[13px] tracking-[0.3em] uppercase text-(--ds-accent) font-medium'>
+									Software Engineer
+								</p>
+								<span className='w-9 h-px bg-(--ds-accent)' />
+							</div>
 						</div>
-						<div
-							className={cn(
-								'absolute -bottom-4 -left-4 border rounded-lg px-4 py-2 shadow-sm',
-								'border shadow-xs hover:text-accent-foreground bg-secondary hover:bg-secondary/95 dark:bg-secondary dark:border-input dark:hover:bg-secondary/95 duration-300 cursor-pointer'
-							)}
-						>
-							<span className={cn('text-sm font-medium ')}>
-								Based in Casablanca 🇲🇦
+						<div className='overflow-hidden pb-[0.08em]'>
+							<h1 className='hero-line m-0 text-[clamp(56px,10vw,160px)] font-semibold tracking-[-0.03em] leading-[1.05] text-foreground'>
+								Ansar{' '}
+								<span className='font-serif italic font-normal tracking-[-0.02em]'>
+									Karrouach
+								</span>
+								<span className='text-(--ds-accent)'>.</span>
+							</h1>
+						</div>
+						<p className='hero-fade mt-7 mb-0 max-w-[480px] text-base leading-[1.7] text-(--ds-muted) font-sans'>
+							Turning ideas into fast, considered products with React, Next.js
+							and TypeScript. Master&apos;s in Big Data and IoT.
+						</p>
+						<div className='hero-fade flex items-center gap-2.5 px-[18px] py-[9px] border border-(--ds-accent-30) rounded-full mt-8'>
+							<span className='animate-pulse-dot w-[7px] h-[7px] rounded-full bg-[oklch(0.72_0.1_145)] [animation:pulse-dot_2s_infinite]' />
+							<span className='text-[13px] text-(--ds-fg-soft)'>
+								Open to opportunities
 							</span>
 						</div>
 					</div>
-				</div>
-			</section>
-
-			{/* About - Bento Style */}
-			<section className='space-y-8'>
-				<div className='flex items-baseline justify-between'>
-					<h2 className='text-sm uppercase tracking-widest text-muted-foreground'>
-						About
-					</h2>
-					<div className='h-px flex-1 bg-border ml-8' />
-				</div>
-
-				<div className='grid md:grid-cols-3 gap-6'>
-					<div className='md:col-span-2 space-y-4'>
-						<p className='text-lg leading-relaxed'>
-							I'm a passionate full-stack developer with expertise in building
-							scalable applications using React, Next.js, and Spring Boot. I
-							specialize in creating modern frontends and robust backends.
-						</p>
-						<p className='text-muted-foreground leading-relaxed'>
-							Currently pursuing my Master's in Big Data and IoT at ENSAM
-							Casablanca, I'm focused on expanding into DevOps while
-							strengthening my full-stack capabilities. I thrive in
-							collaborative environments and enjoy solving complex technical
-							challenges.
-						</p>
-					</div>
-					<div className='space-y-4'>
-						<div className='border rounded-lg p-4 space-y-1'>
-							<p className='text-3xl font-bold'>{siteStats.yearsExperience}</p>
-							<p className='text-sm text-muted-foreground'>
-								Years of Experience
-							</p>
-						</div>
-						<div className='border rounded-lg p-4 space-y-1'>
-							<p className='text-3xl font-bold'>
-								{siteStats.projectsCompleted}
-							</p>
-							<p className='text-sm text-muted-foreground'>
-								Projects Completed
-							</p>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			{/* Projects */}
-			<section className='space-y-8'>
-				<div className='flex items-baseline justify-between'>
-					<h2 className='text-sm uppercase tracking-widest text-muted-foreground'>
-						Featured Work
-					</h2>
-					<div className='h-px flex-1 bg-border mx-8' />
-					<Link
-						href='/projects'
-						className='text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1'
-					>
-						View All <ArrowRight className='h-3 w-3' />
-					</Link>
-				</div>
-
-				<div className='grid md:grid-cols-2 gap-6'>
-					{featuredProjects.map((project, index) => (
-						<ProjectCard project={project} key={index} />
-					))}
-				</div>
-			</section>
-
-			{/* Experience */}
-			<section className='space-y-8'>
-				<div className='flex items-baseline justify-between'>
-					<h2 className='text-sm uppercase tracking-widest text-muted-foreground'>
-						Experience
-					</h2>
-					<div className='h-px flex-1 bg-border ml-8' />
-				</div>
-
-				<div className='space-y-0 divide-y'>
-					{experiences.map((exp, index) => (
-						<div
-							key={index}
-							className='grid md:grid-cols-[1fr_2fr] gap-4 py-8 first:pt-0 last:pb-0'
-						>
-							<div>
-								<p className='font-medium'>{exp.company}</p>
-								<p className='text-sm text-muted-foreground'>{exp.period}</p>
-							</div>
-							<div className='space-y-3'>
-								<div>
-									<h3 className='font-medium'>{exp.title}</h3>
-									<p className='text-sm text-muted-foreground'>
-										{exp.location}
-									</p>
-								</div>
-								<p className='text-sm text-muted-foreground leading-relaxed'>
-									{exp.description}
-								</p>
-								<div className='flex flex-wrap gap-2'>
-									{exp.technologies.map((tech) => (
-										<span
-											key={tech}
-											className='text-xs text-muted-foreground bg-secondary px-2 py-1 rounded'
-										>
-											{tech}
-										</span>
-									))}
-								</div>
-							</div>
-						</div>
-					))}
-				</div>
-			</section>
-
-			{/* Education */}
-			<section className='space-y-8'>
-				<div className='flex items-baseline justify-between'>
-					<h2 className='text-sm uppercase tracking-widest text-muted-foreground'>
-						Education
-					</h2>
-					<div className='h-px flex-1 bg-border ml-8' />
-				</div>
-
-				<div className='space-y-0 divide-y'>
-					{education.map((edu, index) => (
-						<div
-							key={index}
-							className='grid md:grid-cols-[1fr_2fr] gap-4 py-8 first:pt-0 last:pb-0'
-						>
-							<div>
-								<p className='font-medium'>{edu.institution}</p>
-								<p className='text-sm text-muted-foreground'>{edu.period}</p>
-							</div>
-							<div className='space-y-2'>
-								<h3 className='font-medium'>{edu.degree}</h3>
-								<p className='text-sm text-muted-foreground'>{edu.location}</p>
-								{edu.description && (
-									<p className='text-sm text-muted-foreground leading-relaxed'>
-										{edu.description}
-									</p>
-								)}
-							</div>
-						</div>
-					))}
-				</div>
-			</section>
-
-			{/* Skills */}
-			<section className='space-y-8'>
-				<div className='flex items-baseline justify-between'>
-					<h2 className='text-sm uppercase tracking-widest text-muted-foreground'>
-						Tech Stack
-					</h2>
-					<div className='h-px flex-1 bg-border mx-8' />
-					<Link
-						href='/skills'
-						className='text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1'
-					>
-						View All <ArrowRight className='h-3 w-3' />
-					</Link>
-				</div>
-
-				<div className='flex flex-wrap gap-3'>
-					{featuredSkills.map((skill) => (
-						<span
-							key={skill}
-							className='px-4 py-2 border rounded-full text-sm hover:bg-secondary transition-colors'
-						>
-							{skill}
+					<div className='hero-fade absolute bottom-8 left-6 right-6 sm:left-10 sm:right-10 flex justify-between items-end'>
+						<span className='inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-(--ds-muted2)'>
+							<span className='text-(--ds-accent)'>→</span> V2.0
 						</span>
-					))}
-				</div>
-			</section>
-
-			{/* CTA */}
-			<section className='border rounded-2xl p-8 md:p-12'>
-				<div className='max-w-2xl mx-auto text-center space-y-6'>
-					<h2 className='text-3xl md:text-4xl font-bold'>
-						Let's build something great together
-					</h2>
-					<p className='text-muted-foreground'>
-						I'm currently open to new opportunities and interesting projects.
-						Whether you have a question or just want to say hi, I'll get back to
-						you!
-					</p>
-					<div className='flex flex-wrap justify-center gap-3 pt-2'>
-						<Button asChild size='lg'>
-							<Link href='/contact'>
-								<Mail className='mr-2 h-4 w-4' />
-								Get in Touch
-							</Link>
-						</Button>
-						<Button variant='outline' size='lg' asChild>
-							<Link
+						<div className='hidden sm:flex flex-col items-center gap-2 absolute left-1/2 -translate-x-1/2 bottom-0'>
+							<span className='text-[11px] tracking-[0.3em] uppercase text-(--ds-muted2)'>
+								Scroll
+							</span>
+							<span className='animate-scroll-hint text-(--ds-accent) [animation:scroll-hint_1.6s_infinite]'>
+								↓
+							</span>
+						</div>
+						<div className='flex gap-4 sm:gap-[22px]'>
+							<a
+								href='https://github.com/NotAnsar'
+								target='_blank'
+								rel='noopener noreferrer'
+								className='text-xs tracking-[0.15em] uppercase text-(--ds-muted) no-underline hover:text-(--ds-accent) transition-colors'
+							>
+								GitHub
+							</a>
+							<a
 								href='https://linkedin.com/in/ansarkarrouach'
 								target='_blank'
+								rel='noopener noreferrer'
+								className='text-xs tracking-[0.15em] uppercase text-(--ds-muted) no-underline hover:text-(--ds-accent) transition-colors'
 							>
-								<Linkedin className='mr-2 h-4 w-4' />
-								Connect on LinkedIn
-							</Link>
-						</Button>
+								LinkedIn
+							</a>
+							<a
+								href='mailto:karrouach.ansar@gmail.com'
+								className='text-xs tracking-[0.15em] uppercase text-(--ds-muted) no-underline hover:text-(--ds-accent) transition-colors'
+							>
+								Email
+							</a>
+						</div>
 					</div>
-				</div>
-			</section>
+				</section>
+
+				{/* Selected work: index list */}
+				<section id='work' className='py-[140px] px-6 sm:px-10'>
+					<div className='max-w-[1280px] mx-auto'>
+						{sectionLabel('01', 'Selected Work')}
+						<SelectedWork projects={featured} />
+						<div className='reveal flex justify-end mt-8'>
+							<Link
+								href='/projects'
+								className='inline-flex items-center gap-2.5 px-6 py-3 text-[13px] font-medium tracking-[0.12em] uppercase text-foreground border border-(--ds-accent-40) rounded-full no-underline transition-colors duration-300 hover:bg-(--ds-accent-btn-30)'
+							>
+								All Projects · {projectCount} ↗
+							</Link>
+						</div>
+					</div>
+				</section>
+
+				{/* About: single large statement */}
+				<section id='about' className='py-[140px] px-6 sm:px-10'>
+					<div className='max-w-[1280px] mx-auto'>
+						{sectionLabel('02', 'About')}
+						<p className='reveal m-0 max-w-[900px] text-[clamp(26px,3.4vw,44px)] font-normal leading-[1.35] tracking-[-0.015em]'>
+							I build fast, considered products with{' '}
+							<span className='text-(--ds-accent-bright)'>
+								React, Next.js and TypeScript
+							</span>
+							. I hold a Master&apos;s in Big Data and IoT from ENSAM
+							Casablanca, and I specialize in component architecture,
+							performance and SEO.
+						</p>
+						<div className='flex gap-12 sm:gap-20 mt-[72px] flex-wrap'>
+							{landingStats.map((stat) => (
+								<div key={stat.label} className='reveal flex flex-col gap-1.5'>
+									<span
+										className='count-num text-[56px] font-bold text-(--ds-accent-bright) leading-none'
+										data-target={stat.target}
+									>
+										0
+									</span>
+									<span className='text-[13px] tracking-[0.15em] uppercase text-(--ds-muted)'>
+										{stat.label}
+									</span>
+								</div>
+							))}
+						</div>
+					</div>
+				</section>
+
+				{/* Experience: compact */}
+				<section className='py-[140px] px-6 sm:px-10'>
+					<div className='max-w-[1280px] mx-auto'>
+						{sectionLabel('03', 'Experience')}
+						<div className='flex flex-col'>
+							{jobs.map((job) => (
+								<div
+									key={`${job.company}-${job.period}`}
+									className='reveal grid grid-cols-1 sm:grid-cols-[200px_1fr_auto] gap-2 sm:gap-8 items-baseline py-8 px-2 border-t border-border'
+								>
+									<span className='text-sm text-(--ds-accent) font-sans'>
+										{job.period}
+									</span>
+									<div className='flex flex-col gap-1'>
+										<span className='text-xl font-semibold'>{job.role}</span>
+										<span className='text-sm text-(--ds-muted) font-sans'>
+											{job.company} · {job.place}
+										</span>
+									</div>
+									<span className='text-[13px] text-(--ds-muted2) tracking-[0.08em] uppercase'>
+										{job.stack}
+									</span>
+								</div>
+							))}
+							<div className='reveal border-t border-border' />
+						</div>
+					</div>
+				</section>
+
+				{/* Contact: giant CTA */}
+				<section id='contact' className='pt-40 pb-[60px] px-6 sm:px-10'>
+					<div className='max-w-[1280px] mx-auto'>
+						{sectionLabel('04', 'Contact')}
+						<div className='grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-12 lg:gap-[72px] items-end'>
+							<div className='flex flex-col gap-7'>
+								<p className='reveal m-0 ml-1.5 text-sm tracking-[0.25em] uppercase text-(--ds-accent)'>
+									Have a project in mind?
+								</p>
+								<a
+									href='mailto:karrouach.ansar@gmail.com'
+									className='reveal inline-block self-start text-[clamp(52px,8.5vw,130px)] font-bold tracking-[-0.04em] leading-none text-foreground no-underline border-b-[3px] border-(--ds-accent-btn) pb-3 transition-colors duration-300 hover:text-(--ds-accent-bright) hover:border-(--ds-accent-bright)'
+								>
+									LET&apos;S TALK ↗
+								</a>
+								<p className='reveal m-0 ml-1.5 max-w-[460px] text-[15px] leading-[1.7] text-(--ds-muted) font-sans'>
+									Currently open to freelance projects and full-time
+									opportunities. Whether you have a question or just want to say
+									hi, I usually reply within 24 hours.
+								</p>
+							</div>
+							<div className='reveal flex flex-col'>
+								<a
+									href='mailto:karrouach.ansar@gmail.com'
+									className='flex justify-between items-baseline gap-4 py-5 px-1 border-t border-border no-underline transition-[padding-left] duration-300 hover:pl-3'
+								>
+									<span className='text-xs tracking-[0.15em] uppercase text-(--ds-muted2)'>
+										Email
+									</span>
+									<span className='text-[15px] text-foreground font-sans'>
+										karrouach.ansar@gmail.com ↗
+									</span>
+								</a>
+								<a
+									href='https://github.com/NotAnsar'
+									target='_blank'
+									rel='noopener noreferrer'
+									className='flex justify-between items-baseline gap-4 py-5 px-1 border-t border-border no-underline transition-[padding-left] duration-300 hover:pl-3'
+								>
+									<span className='text-xs tracking-[0.15em] uppercase text-(--ds-muted2)'>
+										GitHub
+									</span>
+									<span className='text-[15px] text-foreground font-sans'>
+										@NotAnsar ↗
+									</span>
+								</a>
+								<a
+									href='https://linkedin.com/in/ansarkarrouach'
+									target='_blank'
+									rel='noopener noreferrer'
+									className='flex justify-between items-baseline gap-4 py-5 px-1 border-t border-border no-underline transition-[padding-left] duration-300 hover:pl-3'
+								>
+									<span className='text-xs tracking-[0.15em] uppercase text-(--ds-muted2)'>
+										LinkedIn
+									</span>
+									<span className='text-[15px] text-foreground font-sans'>
+										ansarkarrouach ↗
+									</span>
+								</a>
+								<div className='flex justify-between items-baseline gap-4 py-5 px-1 border-t border-b border-border'>
+									<span className='text-xs tracking-[0.15em] uppercase text-(--ds-muted2)'>
+										Location
+									</span>
+									<span className='text-[15px] text-foreground font-sans'>
+										Casablanca, Morocco
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<SiteFooter />
+			</div>
 		</div>
 	);
 }

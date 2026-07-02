@@ -8,6 +8,7 @@
 	--color-foreground: var(--foreground);
 	--font-sans: var(--font-sans);
 	--font-secondary: var(--font-secondary);
+	--font-serif: var(--font-serif);
 	--color-sidebar-ring: var(--sidebar-ring);
 	--color-sidebar-border: var(--sidebar-border);
 	--color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -78,6 +79,21 @@
 	--sidebar-accent-foreground: oklch(0.205 0 0);
 	--sidebar-border: oklch(0.922 0 0);
 	--sidebar-ring: oklch(0.708 0 0);
+
+	/* Design tokens (Landing Minimal / Projects) — light */
+	--ds-fg-soft: oklch(0.3 0 0);
+	--ds-muted: oklch(0.45 0 0);
+	--ds-muted2: oklch(0.55 0 0);
+	--ds-border-2: oklch(0 0 0 / 14%);
+	--ds-border-3: oklch(0 0 0 / 18%);
+	--ds-accent: oklch(0.58 0.06 74);
+	--ds-accent-bright: oklch(0.5 0.06 74);
+	--ds-accent-btn: var(--primary);
+	--ds-accent-30: oklch(0.58 0.06 74 / 40%);
+	--ds-accent-40: oklch(0.58 0.06 74 / 50%);
+	--ds-accent-8: oklch(0.58 0.06 74 / 10%);
+	--ds-accent-btn-30: oklch(0.655 0.05 74 / 25%);
+	--ds-row-hover: oklch(0 0 0 / 3%);
 }
 
 .dark {
@@ -114,6 +130,20 @@
 	--sidebar-accent-foreground: oklch(0.985 0 0);
 	--sidebar-border: oklch(1 0 0 / 10%);
 	--sidebar-ring: oklch(0.556 0 0);
+
+	/* Design tokens (Landing Minimal / Projects) — dark */
+	--ds-fg-soft: oklch(0.85 0 0);
+	--ds-muted: oklch(0.708 0 0);
+	--ds-muted2: oklch(0.556 0 0);
+	--ds-border-2: oklch(1 0 0 / 12%);
+	--ds-border-3: oklch(1 0 0 / 15%);
+	--ds-accent: oklch(0.655 0.05 74);
+	--ds-accent-bright: oklch(0.72 0.06 74);
+	--ds-accent-30: oklch(0.655 0.05 74 / 30%);
+	--ds-accent-40: oklch(0.655 0.05 74 / 40%);
+	--ds-accent-8: oklch(0.655 0.05 74 / 8%);
+	--ds-accent-btn-30: oklch(0.445 0.05 74 / 30%);
+	--ds-row-hover: oklch(1 0 0 / 2%);
 }
 
 @layer base {
@@ -127,4 +157,44 @@
 
 .gradient-bg {
 	@apply bg-gradient-to-tr from-gray-200 via-background to-gray-200 dark:from-background dark:via-primary-background dark:to-background;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+::selection {
+	background: var(--ds-accent-btn);
+	color: var(--foreground);
+}
+
+@keyframes pulse-dot {
+	0%,
+	100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.3;
+	}
+}
+
+@keyframes scroll-hint {
+	0% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+	100% {
+		transform: translateY(10px);
+		opacity: 0;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+	.animate-pulse-dot,
+	.animate-scroll-hint {
+		animation: none !important;
+	}
 }

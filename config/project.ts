@@ -6,6 +6,8 @@ export const tabs = [
 
 export type Project = {
 	title: string;
+	category: string;
+	focus?: string;
 	description: string;
 	tags: string[];
 	cover: string;
@@ -19,7 +21,37 @@ export type Project = {
 };
 export const projects: Project[] = [
 	{
+		title: 'Sounding Future | Music & 3D Audio Platform',
+		category: 'Audio-Tech Platform',
+		focus: 'Next.js',
+		description:
+			'Sounding Future is a platform for contemporary music creation and 3D audio technology, featuring 105+ in-depth articles from practitioners and researchers, self-paced spatial-audio courses, and curated resources for sound practice.\nAs the sole full-stack developer, I built this custom editorial platform end to end, from architecture to deployment: React/Next.js frontend, Node.js API, database modeling and authentication, role-based access control (author/editor/admin), structured content workflows, and a Tiptap v3 rich text editor with custom React extensions. Deployed on Docker, Coolify, and Traefik with AWS S3 and automated PostgreSQL backups.',
+		tags: [
+			'Next.js',
+			'TypeScript',
+			'Node.js',
+			'Tiptap v3',
+			'PostgreSQL',
+			'Tailwind CSS',
+			'AWS S3',
+			'Docker',
+			'Coolify',
+		],
+		cover: '/image/soundingfuture/cover.png',
+		images: [
+			'/image/soundingfuture/cover.png',
+			'/image/soundingfuture/articles.png',
+			'/image/soundingfuture/listen.png',
+			'/image/soundingfuture/learn.png',
+			'/image/soundingfuture/whats-on.png',
+		],
+		link: 'https://www.soundingfuture.com/',
+		type: 'full-stack',
+	},
+	{
 		title: 'SwapRX | Radiology Replacement Platform',
+		category: 'Healthcare',
+		focus: 'Next.js',
 		description:
 			'SwapRx is a healthcare recruitment platform frontend for the radiology sector, built with Next.js, TypeScript, React.js, Tailwind CSS, Shadcn/ui, React Hook Form, and Axios. It includes features like job listings, user registration, calendar views, document uploads, and an interactive map powered by Google Maps. DocuSeal integration enables seamless contract generation and electronic signatures.',
 		tags: [
@@ -55,6 +87,8 @@ export const projects: Project[] = [
 	},
 	{
 		title: 'Orava | E-commerce Dashboard with AI Assistant',
+		category: 'AI Dashboard',
+		focus: 'Spring Boot',
 		description:
 			'An intelligent e-commerce dashboard featuring AI-powered analytics, inventory management, sales tracking, and automated insights. Designed to streamline business operations with modern UI/UX principles.',
 		tags: [
@@ -90,6 +124,8 @@ export const projects: Project[] = [
 	},
 	{
 		title: 'AudioSpace | Music Streaming Platform',
+		category: 'Music Platform',
+		focus: 'AWS',
 		description:
 			'AudioSpace is a music-focused web platform with integrated learning features. It delivers curated audio-based courses through a clean, minimalist interface, with a strong focus on performance and accessibility.\nIt includes a full LMS for structured learning and is built using Next.js, TypeScript, ShadCN UI, Prisma, and PostgreSQL, with Amazon S3 for efficient file uploads and audio storage.',
 		tags: [
@@ -130,6 +166,8 @@ export const projects: Project[] = [
 
 	{
 		title: 'Cadency | Music Web App',
+		category: 'Music App',
+		focus: 'Next.js 14',
 		description:
 			'Cadency is a music platform developed using cutting-edge technology, including Next.js 14, Tailwind CSS, and Shadcn UI for styling, Prisma with a PostgreSQL database, and NextAuth for authentication.',
 		tags: [
@@ -162,8 +200,9 @@ export const projects: Project[] = [
 	},
 	{
 		title: 'AgroApp | SaaS for food traceability',
+		category: 'SaaS',
 		description:
-			'AgroApp is the frontend of a web application for hygiene and food traceability in the agri-food sector. Built with React, Next.js, TypeScript, Tailwind CSS, Axios, and Nodemailer, it offers a responsive and intuitive interface for managing temperature logs, cleaning schedules, checklists, labeling, and real-time dashboards—designed for professionals like restaurants, caterers, and food retailers.',
+			'AgroApp is the frontend of a web application for hygiene and food traceability in the agri-food sector. Built with React, Next.js, TypeScript, Tailwind CSS, Axios, and Nodemailer, it offers a responsive and intuitive interface for managing temperature logs, cleaning schedules, checklists, labeling, and real-time dashboards, designed for professionals like restaurants, caterers, and food retailers.',
 		tags: [
 			'Next.js',
 			'TypeScript',
@@ -190,6 +229,7 @@ export const projects: Project[] = [
 	},
 	{
 		title: 'Connectify | Social Media App',
+		category: 'Social Media',
 		description:
 			'Connectify is a social media application developed using React.js, Node.js, SCSS, Express.js, and MySQL as the database.',
 		tags: [
@@ -217,6 +257,7 @@ export const projects: Project[] = [
 	},
 	{
 		title: 'Xcelerate | Tech Landing Page',
+		category: 'Landing Page',
 		description:
 			'Xcelerate is a tech company landing page developed with Next.js, TypeScript, Tailwind CSS, Framer Motion, and Figma.',
 		tags: [
@@ -239,6 +280,7 @@ export const projects: Project[] = [
 	},
 	{
 		title: 'Portfolio V1 | Personal Website',
+		category: 'Personal Site',
 		description:
 			'Explore my portfolio v1 website with a sleek dark/light mode switch, built using Next.js, Tailwind CSS, and Shadcn UI, with TypeScript for robustness. Integrated Figma for UI/UX design and Nodemailer for a seamless contact form experience. Discover my work, skills, and experiences in a modern, user-friendly design.',
 		tags: [

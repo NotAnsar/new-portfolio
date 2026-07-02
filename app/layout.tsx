@@ -2,11 +2,10 @@ import type { Metadata } from 'next';
 import {
 	Inter as FontSans,
 	Space_Grotesk as FontSecondary,
+	Instrument_Serif as FontSerif,
 } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import { cn } from '@/lib/utils';
 import { Toaster } from 'sonner';
 
@@ -18,6 +17,12 @@ const fontSans = FontSans({
 const fontSecondary = FontSecondary({
 	subsets: ['latin'],
 	variable: '--font-secondary',
+});
+const fontSerif = FontSerif({
+	subsets: ['latin'],
+	variable: '--font-serif',
+	weight: '400',
+	style: 'italic',
 });
 
 export const metadata: Metadata = {
@@ -61,9 +66,8 @@ export default function RootLayout({
 			<body
 				suppressHydrationWarning
 				className={cn(
-					`${fontSans.variable} ${fontSecondary.variable} antialiased  `,
-
-					'font-secondary bg-gradient-to-tr from-gray-200 via-background to-gray-200 dark:from-background dark:via-primary-background dark:to-background min-h-screen'
+					`${fontSans.variable} ${fontSecondary.variable} ${fontSerif.variable} antialiased`,
+					'font-secondary bg-background text-foreground min-h-screen',
 				)}
 			>
 				<ThemeProvider
@@ -72,12 +76,8 @@ export default function RootLayout({
 					enableSystem
 					disableTransitionOnChange
 				>
-					<Header />
-					<main className='max-w-screen-lg min-h-[85vh] mx-auto p-4 pb-16'>
-						{children}
-						<Toaster className='bg-red-800' />
-					</main>
-					<Footer />
+					{children}
+					<Toaster />
 				</ThemeProvider>
 			</body>
 		</html>
