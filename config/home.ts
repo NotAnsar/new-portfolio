@@ -82,35 +82,67 @@ export const education = [
 
 export const favoriteStack = ['React', 'Next.js', 'TypeScript', 'Spring Boot'];
 
-/** Compact experience rows for the landing page (Landing Minimal design) */
-export const jobs = [
+/** Expandable experience rows for the landing page (Landing Minimal design) */
+export type Job = {
+	period: string;
+	role: string;
+	company: string;
+	place: string;
+	description: string;
+	tags: string[];
+};
+
+export const jobs: Job[] = [
 	{
 		period: 'Feb 2026 - Jun 2026',
 		role: 'Software Engineer Intern',
 		company: 'VOID Digital Agency',
 		place: 'Casablanca',
-		stack: 'Next.js · Playwright · CI/CD',
+		description:
+			'Built and deployed a Next.js and TypeScript frontend for RMA Assurance with audience-scoped routing, search, and API-driven content. Set up a full CI/CD pipeline from scratch with Jenkins, Docker, SonarQube and Trivy, and developed a Playwright E2E framework covering 290 tests across 18 specs and 5 browsers.',
+		tags: [
+			'Next.js',
+			'TypeScript',
+			'Jenkins',
+			'Docker',
+			'Playwright',
+			'SonarQube',
+		],
 	},
 	{
 		period: 'Oct 2024 - May 2026',
 		role: 'Full Stack Developer, Freelance',
 		company: 'Sounding Future',
 		place: 'Remote',
-		stack: 'Next.js · Prisma · Docker',
+		description:
+			'Sole developer of two production platforms: a custom editorial platform with role-based access control, structured content workflows and a Tiptap v3 rich text editor, and AudioSpace, a subscription-based audio streaming and LMS platform serving 300+ artists and 400+ tracks with Stripe payments. Designed and operated the infrastructure with Docker, Coolify, Traefik, AWS S3 and automated PostgreSQL backups.',
+		tags: [
+			'Next.js',
+			'Node.js',
+			'PostgreSQL',
+			'Stripe',
+			'Tiptap',
+			'Docker',
+			'AWS S3',
+		],
 	},
 	{
 		period: 'Jun 2024 - Oct 2024',
 		role: 'Frontend Developer Intern',
 		company: 'Devti Technologie',
 		place: 'Tanger',
-		stack: 'Next.js · ShadCN · REST',
+		description:
+			'Built key user workflows for SwapRx including map-based job discovery, DocuSeal digital contract signing and multi-step onboarding. Built dashboards and data management interfaces for AgroApp with Recharts data visualization.',
+		tags: ['Next.js', 'TypeScript', 'ShadCN', 'Recharts', 'DocuSeal'],
 	},
 	{
 		period: 'Apr 2023 - Jul 2023',
-		role: 'Frontend Developer Intern',
+		role: 'Full Stack Developer Intern',
 		company: 'NJT Group',
 		place: 'Marrakech',
-		stack: 'React · Express · Socket.io',
+		description:
+			'Built Connectify, a real-time social media application with messaging, live presence tracking and content sharing. Designed a RESTful API with JWT authentication, validated through Postman testing.',
+		tags: ['React', 'Express.js', 'Socket.io', 'MySQL', 'JWT'],
 	},
 ];
 

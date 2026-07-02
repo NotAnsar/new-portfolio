@@ -4,6 +4,8 @@ import SiteFooter from '@/components/SiteFooter';
 import ParticleBackground from '@/components/ParticleBackground';
 import LandingEffects from '@/components/LandingEffects';
 import SelectedWork from '@/components/SelectedWork';
+import ExperienceAccordion from '@/components/ExperienceAccordion';
+import ContactForm from '@/components/ContactForm';
 import { projects } from '@/config/project';
 import { jobs, landingStats } from '@/config/home';
 
@@ -152,108 +154,80 @@ export default function Home() {
 					</div>
 				</section>
 
-				{/* Experience: compact */}
+				{/* Experience: expandable accordion */}
 				<section className='py-[140px] px-6 sm:px-10'>
 					<div className='max-w-[1280px] mx-auto'>
 						{sectionLabel('03', 'Experience')}
-						<div className='flex flex-col'>
-							{jobs.map((job) => (
-								<div
-									key={`${job.company}-${job.period}`}
-									className='reveal grid grid-cols-1 sm:grid-cols-[200px_1fr_auto] gap-2 sm:gap-8 items-baseline py-8 px-2 border-t border-border'
-								>
-									<span className='text-sm text-(--ds-accent) font-sans'>
-										{job.period}
-									</span>
-									<div className='flex flex-col gap-1'>
-										<span className='text-xl font-semibold'>{job.role}</span>
-										<span className='text-sm text-(--ds-muted) font-sans'>
-											{job.company} · {job.place}
-										</span>
-									</div>
-									<span className='text-[13px] text-(--ds-muted2) tracking-[0.08em] uppercase'>
-										{job.stack}
-									</span>
-								</div>
-							))}
-							<div className='reveal border-t border-border' />
-						</div>
+						<ExperienceAccordion jobs={jobs} />
 					</div>
 				</section>
 
-				{/* Contact: giant CTA */}
-				<section id='contact' className='pt-40 pb-[60px] px-6 sm:px-10'>
+				{/* Contact: lead + details + form */}
+				<section id='contact' className='pt-[140px] pb-0 px-6 sm:px-10'>
 					<div className='max-w-[1280px] mx-auto'>
 						{sectionLabel('04', 'Contact')}
-						<div className='grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-12 lg:gap-[72px] items-end'>
-							<div className='flex flex-col gap-7'>
-								<p className='reveal m-0 ml-1.5 text-sm tracking-[0.25em] uppercase text-(--ds-accent)'>
-									Have a project in mind?
+						<div className='grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-[72px] items-start'>
+							<div className='flex flex-col gap-12'>
+								<p className='reveal m-0 text-[clamp(22px,2.6vw,34px)] font-normal leading-[1.4] tracking-[-0.01em] text-foreground'>
+									Tell me about your project,{' '}
+									<span className='font-serif italic text-(--ds-accent-bright)'>
+										I&apos;ll take it from there.
+									</span>
 								</p>
-								<a
-									href='mailto:karrouach.ansar@gmail.com'
-									className='reveal inline-block self-start text-[clamp(52px,8.5vw,130px)] font-bold tracking-[-0.04em] leading-none text-foreground no-underline border-b-[3px] border-(--ds-accent-btn) pb-3 transition-colors duration-300 hover:text-(--ds-accent-bright) hover:border-(--ds-accent-bright)'
-								>
-									LET&apos;S TALK ↗
-								</a>
-								<p className='reveal m-0 ml-1.5 max-w-[460px] text-[15px] leading-[1.7] text-(--ds-muted) font-sans'>
-									Currently open to freelance projects and full-time
-									opportunities. Whether you have a question or just want to say
-									hi, I usually reply within 24 hours.
-								</p>
-							</div>
-							<div className='reveal flex flex-col'>
-								<a
-									href='mailto:karrouach.ansar@gmail.com'
-									className='flex justify-between items-baseline gap-4 py-5 px-1 border-t border-border no-underline transition-[padding-left] duration-300 hover:pl-3'
-								>
-									<span className='text-xs tracking-[0.15em] uppercase text-(--ds-muted2)'>
-										Email
-									</span>
-									<span className='text-[15px] text-foreground font-sans'>
-										karrouach.ansar@gmail.com ↗
-									</span>
-								</a>
-								<a
-									href='https://github.com/NotAnsar'
-									target='_blank'
-									rel='noopener noreferrer'
-									className='flex justify-between items-baseline gap-4 py-5 px-1 border-t border-border no-underline transition-[padding-left] duration-300 hover:pl-3'
-								>
-									<span className='text-xs tracking-[0.15em] uppercase text-(--ds-muted2)'>
-										GitHub
-									</span>
-									<span className='text-[15px] text-foreground font-sans'>
-										@NotAnsar ↗
-									</span>
-								</a>
-								<a
-									href='https://linkedin.com/in/ansarkarrouach'
-									target='_blank'
-									rel='noopener noreferrer'
-									className='flex justify-between items-baseline gap-4 py-5 px-1 border-t border-border no-underline transition-[padding-left] duration-300 hover:pl-3'
-								>
-									<span className='text-xs tracking-[0.15em] uppercase text-(--ds-muted2)'>
-										LinkedIn
-									</span>
-									<span className='text-[15px] text-foreground font-sans'>
-										ansarkarrouach ↗
-									</span>
-								</a>
-								<div className='flex justify-between items-baseline gap-4 py-5 px-1 border-t border-b border-border'>
-									<span className='text-xs tracking-[0.15em] uppercase text-(--ds-muted2)'>
-										Location
-									</span>
-									<span className='text-[15px] text-foreground font-sans'>
-										Casablanca, Morocco
-									</span>
+								<div className='reveal flex flex-col'>
+									<a
+										href='mailto:karrouach.ansar@gmail.com'
+										className='flex justify-between items-baseline gap-4 py-[18px] px-1 border-t border-border no-underline transition-[padding-left] duration-300 hover:pl-3'
+									>
+										<span className='text-xs tracking-[0.15em] uppercase text-(--ds-muted2)'>
+											Email
+										</span>
+										<span className='text-sm text-foreground font-sans'>
+											karrouach.ansar@gmail.com ↗
+										</span>
+									</a>
+									<a
+										href='https://github.com/NotAnsar'
+										target='_blank'
+										rel='noopener noreferrer'
+										className='flex justify-between items-baseline gap-4 py-[18px] px-1 border-t border-border no-underline transition-[padding-left] duration-300 hover:pl-3'
+									>
+										<span className='text-xs tracking-[0.15em] uppercase text-(--ds-muted2)'>
+											GitHub
+										</span>
+										<span className='text-sm text-foreground font-sans'>
+											@NotAnsar ↗
+										</span>
+									</a>
+									<a
+										href='https://linkedin.com/in/ansarkarrouach'
+										target='_blank'
+										rel='noopener noreferrer'
+										className='flex justify-between items-baseline gap-4 py-[18px] px-1 border-t border-border no-underline transition-[padding-left] duration-300 hover:pl-3'
+									>
+										<span className='text-xs tracking-[0.15em] uppercase text-(--ds-muted2)'>
+											LinkedIn
+										</span>
+										<span className='text-sm text-foreground font-sans'>
+											ansarkarrouach ↗
+										</span>
+									</a>
+									<div className='flex justify-between items-baseline gap-4 py-[18px] px-1 border-t border-b border-border'>
+										<span className='text-xs tracking-[0.15em] uppercase text-(--ds-muted2)'>
+											Location
+										</span>
+										<span className='text-sm text-foreground font-sans'>
+											Casablanca, Morocco
+										</span>
+									</div>
 								</div>
 							</div>
+							<ContactForm />
 						</div>
 					</div>
 				</section>
 
-				<SiteFooter />
+				<SiteFooter className='pt-[120px]' />
 			</div>
 		</div>
 	);

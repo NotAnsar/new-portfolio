@@ -1,11 +1,12 @@
 import Link from 'next/link';
+import { cn } from '@/lib/utils';
 
 const footerLink =
 	'text-[13px] text-(--ds-muted) no-underline tracking-[0.08em] uppercase hover:text-(--ds-accent) transition-colors';
 
-export default function SiteFooter() {
+export default function SiteFooter({ className }: { className?: string }) {
 	return (
-		<footer className='px-6 sm:px-10 pb-[60px]'>
+		<footer className={cn('px-6 sm:px-10 pb-[60px]', className)}>
 			<div className='max-w-[1280px] mx-auto flex justify-between items-center pt-7 border-t border-border flex-wrap gap-4'>
 				<span className='text-[13px] text-(--ds-muted2) font-sans'>
 					© {new Date().getFullYear()} Ansar Karrouach
