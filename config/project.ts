@@ -4,6 +4,9 @@ export const tabs = [
 	{ label: 'Full-stack', value: 'full-stack' },
 ];
 
+export type Highlight = { title: string; body: string };
+export type GalleryImage = { src: string; label: string };
+
 export type Project = {
 	title: string;
 	category: string;
@@ -18,6 +21,15 @@ export type Project = {
 	backendRepo?: string;
 	youtube?: string;
 	type: 'front-end' | 'full-stack';
+	/** Case-study detail page (app/projects/[slug]) — omitted for projects without one */
+	slug?: string;
+	year?: string;
+	role?: string;
+	projectType?: string;
+	tagline?: string;
+	overview?: string;
+	highlights?: Highlight[];
+	gallery?: GalleryImage[];
 };
 export const projects: Project[] = [
 	{
@@ -47,6 +59,34 @@ export const projects: Project[] = [
 		],
 		link: 'https://www.soundingfuture.com/',
 		type: 'full-stack',
+		slug: 'soundingfuture',
+		year: '2024 – 2026',
+		role: 'Sole Full Stack Developer',
+		projectType: 'Freelance, production',
+		tagline:
+			'A custom editorial platform for contemporary music creation and 3D audio technology, with 105+ articles and self-paced spatial-audio courses.',
+		overview:
+			'Sounding Future turns a niche audio-tech publication into a full editorial platform, built and operated end to end by one developer.',
+		highlights: [
+			{
+				title: 'Custom editorial platform',
+				body: 'Role-based access control (author/editor/admin), structured content workflows, and a Tiptap v3 rich text editor with custom React extensions for a 105+ article library.',
+			},
+			{
+				title: 'Sister platform: AudioSpace',
+				body: 'Also sole developer of AudioSpace, the subscription audio streaming and LMS platform serving 300+ artists and 400+ tracks with Stripe payments.',
+			},
+			{
+				title: 'Owned infrastructure',
+				body: 'Docker, Coolify and Traefik deployment with AWS S3 storage and automated PostgreSQL backups, run solo in production.',
+			},
+		],
+		gallery: [
+			{ src: '/image/soundingfuture/articles.png', label: 'Articles' },
+			{ src: '/image/soundingfuture/listen.png', label: '3D AudioSpace' },
+			{ src: '/image/soundingfuture/learn.png', label: 'Courses' },
+			{ src: '/image/soundingfuture/whats-on.png', label: "What's on" },
+		],
 	},
 	{
 		title: 'SwapRX | Radiology Replacement Platform',
@@ -84,6 +124,34 @@ export const projects: Project[] = [
 		],
 		type: 'front-end',
 		link: 'https://www.swapsante.online/',
+		slug: 'swaprx',
+		year: '2024',
+		role: 'Frontend Developer',
+		projectType: 'Client project',
+		tagline:
+			'A recruitment platform connecting radiology professionals with clinics, from discovery to signed contract.',
+		overview:
+			'SwapRX turns a slow, paperwork-heavy hiring process into a single flow: find a mission on the map, apply, and sign digitally.',
+		highlights: [
+			{
+				title: 'Map-based job discovery',
+				body: 'Interactive Google Maps view with clustered missions, filtering, and location-aware search so radiologists find nearby placements at a glance.',
+			},
+			{
+				title: 'Digital contract signing',
+				body: 'DocuSeal integration generating contracts from mission data and capturing legally binding electronic signatures without leaving the platform.',
+			},
+			{
+				title: 'Multi-step onboarding',
+				body: 'Guided registration with document upload, validation and progress persistence, cutting drop-off in the sign-up funnel.',
+			},
+		],
+		gallery: [
+			{ src: '/image/swaprx/home.png', label: 'Home' },
+			{ src: '/image/swaprx/offres_map.png', label: 'Map-based job discovery' },
+			{ src: '/image/swaprx/chat_convo.png', label: 'Messaging' },
+			{ src: '/image/swaprx/contracts.png', label: 'Contracts' },
+		],
 	},
 	{
 		title: 'Orava | E-commerce Dashboard with AI Assistant',
@@ -121,6 +189,34 @@ export const projects: Project[] = [
 		backendRepo: 'https://github.com/NotAnsar/orava-api/',
 		frontendRepo: 'https://github.com/NotAnsar/orava-front/',
 		type: 'full-stack',
+		slug: 'orava',
+		year: '2025',
+		role: 'Full Stack Developer',
+		projectType: 'Personal project',
+		tagline:
+			'An intelligent e-commerce dashboard with AI-powered analytics and automated insights.',
+		overview:
+			'Orava gives store operators one screen for inventory, sales and AI-generated recommendations.',
+		highlights: [
+			{
+				title: 'AI-assisted analytics',
+				body: 'Automated insight generation over sales and inventory data, surfacing anomalies and recommendations.',
+			},
+			{
+				title: 'Java backend, typed frontend',
+				body: 'Spring Boot REST API consumed by a fully typed Next.js dashboard with Chart.js visualizations.',
+			},
+			{
+				title: 'S3 media pipeline',
+				body: 'Product imagery stored and served through AWS S3 with signed access.',
+			},
+		],
+		gallery: [
+			{ src: '/image/orava/home.png', label: 'Dashboard' },
+			{ src: '/image/orava/products.png', label: 'Products' },
+			{ src: '/image/orava/analytics.png', label: 'Analytics' },
+			{ src: '/image/orava/kanban.png', label: 'Kanban' },
+		],
 	},
 	{
 		title: 'AudioSpace | Music Streaming Platform',
@@ -162,6 +258,34 @@ export const projects: Project[] = [
 		],
 		link: 'https://audiospace.soundingfuture.com/',
 		type: 'full-stack',
+		slug: 'audiospace',
+		year: '2024 – 2026',
+		role: 'Sole Full Stack Developer',
+		projectType: 'Freelance, production',
+		tagline:
+			'A subscription audio streaming and learning platform serving 300+ artists and 400+ tracks.',
+		overview:
+			'AudioSpace pairs a streaming catalogue with structured audio courses, built and operated end to end by one developer.',
+		highlights: [
+			{
+				title: '300+ artists, 400+ tracks',
+				body: 'Production catalogue with S3-backed audio delivery, focused on performance and accessibility across devices.',
+			},
+			{
+				title: 'Stripe subscriptions',
+				body: 'Tiered subscription model with webhooks-driven entitlements gating streaming and course access.',
+			},
+			{
+				title: 'Owned infrastructure',
+				body: 'Dockerized deployment on Coolify with Traefik routing and automated PostgreSQL backups, run solo in production.',
+			},
+		],
+		gallery: [
+			{ src: '/image/audiospace/home.png', label: 'Home' },
+			{ src: '/image/audiospace/tracks.png', label: 'Track catalogue' },
+			{ src: '/image/audiospace/courses.png', label: 'Audio courses' },
+			{ src: '/image/audiospace/artists.png', label: 'Artists' },
+		],
 	},
 
 	{
@@ -197,6 +321,32 @@ export const projects: Project[] = [
 		link: 'https://cadency-music.vercel.app/',
 		github: 'http://github.com/NotAnsar/cadency',
 		type: 'full-stack',
+		slug: 'cadency',
+		year: '2024',
+		role: 'Full Stack Developer',
+		projectType: 'Personal project',
+		tagline: 'A music platform focused on a curated listening experience.',
+		overview:
+			'Cadency is a clean, fast music web app built on the modern Next.js stack.',
+		highlights: [
+			{
+				title: 'Curated listening',
+				body: 'Playlist and collection system designed around discovery rather than infinite scroll.',
+			},
+			{
+				title: 'Modern auth',
+				body: 'NextAuth with email and OAuth providers over a Prisma/PostgreSQL data layer.',
+			},
+			{
+				title: 'Polished UI',
+				body: 'Shadcn UI component system with a fully responsive player.',
+			},
+		],
+		gallery: [
+			{ src: '/image/cadency/HomeDark.png', label: 'Home' },
+			{ src: '/image/cadency/artist.png', label: 'Artist page' },
+			{ src: '/image/cadency/search.png', label: 'Search' },
+		],
 	},
 	{
 		title: 'AgroApp | SaaS for food traceability',
@@ -226,6 +376,32 @@ export const projects: Project[] = [
 			'/image/agro/page_light.png',
 		],
 		type: 'front-end',
+		slug: 'agro',
+		year: '2024',
+		role: 'Frontend Developer',
+		projectType: 'Client project',
+		tagline: 'A hygiene and food-traceability SaaS for the agri-food sector.',
+		overview:
+			'AgroApp digitizes hygiene compliance for restaurants, caterers and food retailers.',
+		highlights: [
+			{
+				title: 'Compliance workflows',
+				body: 'Temperature logging, cleaning schedules and checklist flows mapped to real regulatory processes.',
+			},
+			{
+				title: 'Live dashboards',
+				body: 'Recharts-powered dashboards giving managers real-time visibility across sites.',
+			},
+			{
+				title: 'Data-dense UI',
+				body: 'Tables, filters and forms designed for daily operational use on tablets and desktops.',
+			},
+		],
+		gallery: [
+			{ src: '/image/agro/dashboard.png', label: 'Dashboard' },
+			{ src: '/image/agro/landing.png', label: 'Landing' },
+			{ src: '/image/agro/page.png', label: 'Operations' },
+		],
 	},
 	{
 		title: 'Connectify | Social Media App',
@@ -254,6 +430,33 @@ export const projects: Project[] = [
 		frontendRepo: 'https://github.com/NotAnsar/connectify-client',
 		backendRepo: 'https://github.com/NotAnsar/connectify-api',
 		type: 'full-stack',
+		slug: 'connectify',
+		year: '2023',
+		role: 'Full Stack Developer',
+		projectType: 'Internship project',
+		tagline:
+			'A real-time social media application with messaging and live presence.',
+		overview:
+			'Connectify covers the full social loop: profiles, sharing, and real-time conversation.',
+		highlights: [
+			{
+				title: 'Real-time messaging',
+				body: 'Socket.io channels for instant messaging and live presence indicators.',
+			},
+			{
+				title: 'JWT-secured API',
+				body: 'RESTful Express API with JWT authentication, exercised through Postman test collections.',
+			},
+			{
+				title: 'Full social loop',
+				body: 'Profiles, follows, posts and comments over a normalized MySQL schema.',
+			},
+		],
+		gallery: [
+			{ src: '/image/connectify/Home.png', label: 'Feed' },
+			{ src: '/image/connectify/Chat.png', label: 'Real-time chat' },
+			{ src: '/image/connectify/Profile.png', label: 'Profile' },
+		],
 	},
 	{
 		title: 'Xcelerate | Tech Landing Page',

@@ -5,9 +5,16 @@ import ParticleBackground from '@/components/ParticleBackground';
 import LandingEffects from '@/components/LandingEffects';
 import SelectedWork from '@/components/SelectedWork';
 import ExperienceAccordion from '@/components/ExperienceAccordion';
+import EducationSection from '@/components/EducationSection';
+import StackMarquee from '@/components/StackMarquee';
 import ContactForm from '@/components/ContactForm';
 import { projects } from '@/config/project';
-import { jobs, landingStats } from '@/config/home';
+import {
+	jobs,
+	landingStats,
+	educationColumns,
+	stackGroups,
+} from '@/config/home';
 
 const sectionLabel = (num: string, label: string) => (
 	<div className='reveal flex items-baseline gap-4 mb-16'>
@@ -162,10 +169,36 @@ export default function Home() {
 					</div>
 				</section>
 
+				{/* Education */}
+				<section className='py-[140px] px-6 sm:px-10'>
+					<div className='max-w-[1280px] mx-auto'>
+						{sectionLabel('04', 'Education')}
+						<EducationSection columns={educationColumns} />
+					</div>
+				</section>
+
+				{/* Stack: marquee bands */}
+				<section className='pt-[140px]'>
+					<div className='max-w-[1280px] mx-auto px-6 sm:px-10'>
+						<div className='reveal flex items-baseline gap-4 mb-6'>
+							<span className='text-[13px] text-(--ds-accent) tracking-[0.2em]'>
+								05
+							</span>
+							<h2 className='m-0 text-[15px] tracking-[0.25em] uppercase font-medium text-(--ds-muted)'>
+								Stack
+							</h2>
+							<span className='ml-auto text-xs tracking-[0.12em] uppercase text-(--ds-muted2)'>
+								Hover to pause
+							</span>
+						</div>
+					</div>
+					<StackMarquee groups={stackGroups} />
+				</section>
+
 				{/* Contact: lead + details + form */}
 				<section id='contact' className='pt-[140px] pb-0 px-6 sm:px-10'>
 					<div className='max-w-[1280px] mx-auto'>
-						{sectionLabel('04', 'Contact')}
+						{sectionLabel('06', 'Contact')}
 						<div className='grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-[72px] items-start'>
 							<div className='flex flex-col gap-12'>
 								<p className='reveal m-0 text-[clamp(22px,2.6vw,34px)] font-normal leading-[1.4] tracking-[-0.01em] text-foreground'>

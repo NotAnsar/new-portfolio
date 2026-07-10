@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { useTheme } from 'next-themes';
 
-const COLORS = { dark: 0xb59b76, light: 0x7a6547 };
+const COLORS = { dark: 0xbfa171, light: 0x6a563a };
 
 type Props = {
 	particleCount?: number;
@@ -14,7 +14,7 @@ type Props = {
 
 export default function ParticleBackground({
 	particleCount = 500,
-	particleOpacity = 0.55,
+	particleOpacity = 0.72,
 	wirePosition = [8, 1, -4],
 }: Props) {
 	const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -28,7 +28,7 @@ export default function ParticleBackground({
 		if (!canvas || particleCount === 0) return;
 
 		const reducedMotion = window.matchMedia(
-			'(prefers-reduced-motion: reduce)'
+			'(prefers-reduced-motion: reduce)',
 		).matches;
 
 		const renderer = new THREE.WebGLRenderer({
@@ -44,7 +44,7 @@ export default function ParticleBackground({
 			60,
 			window.innerWidth / window.innerHeight,
 			0.1,
-			100
+			100,
 		);
 		camera.position.z = 14;
 
@@ -61,11 +61,11 @@ export default function ParticleBackground({
 		geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
 		const mat = new THREE.PointsMaterial({
 			color: COLORS.dark,
-			size: 0.045,
+			size: 0.06,
 			transparent: true,
 			opacity: particleOpacity,
 			depthWrite: false,
-			blending: THREE.AdditiveBlending,
+			blending: THREE.NormalBlending,
 		});
 		const points = new THREE.Points(geo, mat);
 		scene.add(points);
@@ -77,7 +77,7 @@ export default function ParticleBackground({
 			color: COLORS.dark,
 			wireframe: true,
 			transparent: true,
-			opacity: 0.05,
+			opacity: 0.11,
 		});
 		const wire = new THREE.Mesh(wireGeo, wireMat);
 		wire.position.set(...wirePosition);
@@ -150,7 +150,6 @@ export default function ParticleBackground({
 		const wireMat = wireMatRef.current;
 		if (mat) {
 			mat.color.setHex(light ? COLORS.light : COLORS.dark);
-			mat.blending = light ? THREE.NormalBlending : THREE.AdditiveBlending;
 			mat.needsUpdate = true;
 		}
 		if (wireMat) wireMat.color.setHex(light ? COLORS.light : COLORS.dark);

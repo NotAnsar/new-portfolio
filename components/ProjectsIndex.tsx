@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { cn } from '@/lib/utils';
@@ -38,6 +39,9 @@ export default function ProjectsIndex({
 	const previewRef = useRef<HTMLDivElement>(null);
 	const barRef = useRef<HTMLDivElement>(null);
 	const reducedRef = useRef(false);
+	// Tracks which row index is currently hovered so an out-of-order mouseleave
+	// from a row we already left can't hide a preview a newer row owns.
+	const activeRef = useRef<number | null>(null);
 	const quickRef = useRef<{
 		x: (v: number) => void;
 		y: (v: number) => void;
@@ -98,8 +102,22 @@ export default function ProjectsIndex({
 		};
 		window.addEventListener('mousemove', onMouse);
 
+		// Scrolling doesn't fire mouseleave, so hide the preview on scroll.
+		const onScroll = () => {
+			if (!previewRef.current) return;
+			activeRef.current = null;
+			gsap.killTweensOf(previewRef.current, 'opacity,scale');
+			gsap.to(previewRef.current, {
+				opacity: 0,
+				duration: 0.2,
+				ease: 'power2.in',
+			});
+		};
+		window.addEventListener('scroll', onScroll, { passive: true });
+
 		return () => {
 			window.removeEventListener('mousemove', onMouse);
+			window.removeEventListener('scroll', onScroll);
 			ctx.revert();
 		};
 	}, []);
@@ -124,25 +142,35 @@ export default function ProjectsIndex({
 		);
 	}, [expanded]);
 
-	const showPreview = (src: string) => {
-		if (reducedRef.current) return;
+	const showPreview = (index: number, src: string) => {
+		if (reducedRef.current || !previewRef.current) return;
+		activeRef.current = index;
 		setPreviewSrc(src);
-		if (previewRef.current)
-			gsap.to(previewRef.current, {
-				opacity: 1,
-				scale: 1,
-				duration: 0.3,
-				ease: 'power2.out',
-			});
+		// Only kill fade tweens, not the cursor-follow x/y quickTo tweens.
+		gsap.killTweensOf(previewRef.current, 'opacity,scale');
+		gsap.to(previewRef.current, {
+			opacity: 1,
+			scale: 1,
+			duration: 0.3,
+			ease: 'power2.out',
+		});
 	};
 
-	const hidePreview = () => {
+	const forceHide = () => {
 		if (reducedRef.current || !previewRef.current) return;
+		activeRef.current = null;
+		gsap.killTweensOf(previewRef.current, 'opacity,scale');
 		gsap.to(previewRef.current, {
 			opacity: 0,
 			duration: 0.25,
 			ease: 'power2.in',
 		});
+	};
+
+	const hidePreview = (index: number) => {
+		// A newer row already took over — ignore this stale leave.
+		if (activeRef.current !== index) return;
+		forceHide();
 	};
 
 	return (
@@ -223,7 +251,7 @@ export default function ProjectsIndex({
 
 			{/* Index list */}
 			<section className='pt-6 pb-[120px] px-6 sm:px-10'>
-				<div className='max-w-[1280px] mx-auto flex flex-col'>
+				<div className='max-w-[1280px] mx-auto flex flex-col' onMouseLeave={forceHide}>
 					{filtered.map((project, i) => {
 						const isOpen = expanded === i;
 						const links = projectLinks(project);
@@ -240,8 +268,8 @@ export default function ProjectsIndex({
 											setExpanded(isOpen ? -1 : i);
 										}
 									}}
-									onMouseEnter={() => showPreview(project.cover)}
-									onMouseLeave={hidePreview}
+									onMouseEnter={() => showPreview(i, project.cover)}
+									onMouseLeave={() => hidePreview(i)}
 									className='project-row grid grid-cols-[48px_1fr_auto] sm:grid-cols-[80px_1fr_auto_auto] items-center gap-4 sm:gap-8 py-9 px-2 cursor-pointer transition-[padding-left] duration-[350ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:pl-8'
 								>
 									<span className='text-sm text-(--ds-muted2) font-sans'>
@@ -273,22 +301,29 @@ export default function ProjectsIndex({
 													</span>
 												))}
 											</div>
-											{links.length > 0 && (
-												<div className='flex flex-wrap gap-3 pt-1'>
-													{links.map((l) => (
-														<a
-															key={l.href}
-															href={l.href}
-															target='_blank'
-															rel='noopener noreferrer'
-															onClick={(e) => e.stopPropagation()}
-															className='inline-flex items-center gap-2 px-5 py-2.5 text-[13px] font-medium tracking-[0.08em] uppercase text-foreground border border-(--ds-accent-40) rounded-full no-underline transition-colors duration-300 hover:bg-(--ds-accent-btn-30)'
-														>
-															{l.label} ↗
-														</a>
-													))}
-												</div>
-											)}
+											<div className='flex flex-wrap gap-3 pt-1'>
+												{project.slug && (
+													<Link
+														href={`/projects/${project.slug}`}
+														onClick={(e) => e.stopPropagation()}
+														className='inline-flex items-center gap-2 px-5 py-2.5 text-[13px] font-medium tracking-[0.08em] uppercase text-background bg-foreground border border-foreground rounded-full no-underline transition-colors duration-300 hover:bg-(--ds-accent-btn) hover:border-(--ds-accent-btn)'
+													>
+														Case Study ↗
+													</Link>
+												)}
+												{links.map((l) => (
+													<a
+														key={l.href}
+														href={l.href}
+														target='_blank'
+														rel='noopener noreferrer'
+														onClick={(e) => e.stopPropagation()}
+														className='inline-flex items-center gap-2 px-5 py-2.5 text-[13px] font-medium tracking-[0.08em] uppercase text-foreground border border-(--ds-accent-40) rounded-full no-underline transition-colors duration-300 hover:bg-(--ds-accent-btn-30)'
+													>
+														{l.label} ↗
+													</a>
+												))}
+											</div>
 										</div>
 										<div className='relative overflow-hidden rounded-[10px] border border-border self-start h-[240px] sm:h-[320px] w-full'>
 											<Image

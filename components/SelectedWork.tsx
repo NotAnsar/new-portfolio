@@ -10,6 +10,9 @@ export default function SelectedWork({ projects }: { projects: Project[] }) {
 	const [previewSrc, setPreviewSrc] = useState('');
 	const previewRef = useRef<HTMLDivElement>(null);
 	const reducedRef = useRef(false);
+	// Tracks which row index is currently hovered so an out-of-order mouseleave
+	// from a row we already left can't hide a preview a newer row owns.
+	const activeRef = useRef<number | null>(null);
 	const quickRef = useRef<{
 		x: (v: number) => void;
 		y: (v: number) => void;
@@ -38,28 +41,55 @@ export default function SelectedWork({ projects }: { projects: Project[] }) {
 			quickRef.current?.y(e.clientY - 125);
 		};
 		window.addEventListener('mousemove', onMouse);
-		return () => window.removeEventListener('mousemove', onMouse);
+
+		// Scrolling doesn't fire mouseleave, so hide the preview on scroll.
+		const onScroll = () => {
+			if (!previewRef.current) return;
+			activeRef.current = null;
+			gsap.killTweensOf(previewRef.current, 'opacity,scale');
+			gsap.to(previewRef.current, {
+				opacity: 0,
+				duration: 0.2,
+				ease: 'power2.in',
+			});
+		};
+		window.addEventListener('scroll', onScroll, { passive: true });
+
+		return () => {
+			window.removeEventListener('mousemove', onMouse);
+			window.removeEventListener('scroll', onScroll);
+		};
 	}, []);
 
-	const showPreview = (src: string) => {
-		if (reducedRef.current) return;
+	const showPreview = (index: number, src: string) => {
+		if (reducedRef.current || !previewRef.current) return;
+		activeRef.current = index;
 		setPreviewSrc(src);
-		if (previewRef.current)
-			gsap.to(previewRef.current, {
-				opacity: 1,
-				scale: 1,
-				duration: 0.3,
-				ease: 'power2.out',
-			});
+		// Only kill fade tweens, not the cursor-follow x/y quickTo tweens.
+		gsap.killTweensOf(previewRef.current, 'opacity,scale');
+		gsap.to(previewRef.current, {
+			opacity: 1,
+			scale: 1,
+			duration: 0.3,
+			ease: 'power2.out',
+		});
 	};
 
-	const hidePreview = () => {
+	const forceHide = () => {
 		if (reducedRef.current || !previewRef.current) return;
+		activeRef.current = null;
+		gsap.killTweensOf(previewRef.current, 'opacity,scale');
 		gsap.to(previewRef.current, {
 			opacity: 0,
 			duration: 0.25,
 			ease: 'power2.in',
 		});
+	};
+
+	const hidePreview = (index: number) => {
+		// A newer row already took over — ignore this stale leave.
+		if (activeRef.current !== index) return;
+		forceHide();
 	};
 
 	return (
@@ -81,13 +111,13 @@ export default function SelectedWork({ projects }: { projects: Project[] }) {
 				)}
 			</div>
 
-			<div className='flex flex-col'>
+			<div className='flex flex-col' onMouseLeave={forceHide}>
 				{projects.map((project, i) => (
 					<Link
 						key={project.title}
-						href='/projects'
-						onMouseEnter={() => showPreview(project.cover)}
-						onMouseLeave={hidePreview}
+						href={project.slug ? `/projects/${project.slug}` : '/projects'}
+						onMouseEnter={() => showPreview(i, project.cover)}
+						onMouseLeave={() => hidePreview(i)}
 						className='reveal grid grid-cols-[48px_1fr_auto] sm:grid-cols-[80px_1fr_auto_auto] items-center gap-4 sm:gap-8 py-10 px-2 border-t border-border no-underline text-inherit transition-[padding-left] duration-[350ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:pl-8'
 					>
 						<span className='text-sm text-(--ds-muted2) font-sans'>

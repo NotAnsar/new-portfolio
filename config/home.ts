@@ -152,3 +152,73 @@ export const landingStats = [
 	{ target: 10, label: 'Projects completed' },
 	{ target: 4, label: 'Companies' },
 ];
+
+/** Landing page Education section (section 04) */
+export type EducationColumn = {
+	heading: string;
+	subheading: string;
+	items: string[];
+};
+
+export const educationColumns: EducationColumn[] = [
+	{
+		heading: 'ENSAM Casablanca',
+		subheading: "Master's in Big Data & IoT",
+		items: ['2024 - 2026'],
+	},
+	{
+		heading: 'FSSM Marrakech',
+		subheading: 'Professional License, Web Technologies',
+		items: ['2023'],
+	},
+	{
+		heading: 'Languages',
+		subheading: 'Spoken & certifications',
+		items: [
+			'English — Fluent',
+			'French — Fluent',
+			'Arabic — Native',
+			'AWS Academy Cloud Foundations',
+		],
+	},
+];
+
+/** Landing page Stack section (section 05) — one marquee band per group */
+export type StackGroup = {
+	label: string;
+	items: string[];
+};
+
+export const stackGroups: StackGroup[] = [
+	{
+		label: 'Frontend',
+		items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'ShadCN', 'Redux'],
+	},
+	{
+		label: 'Backend',
+		items: [
+			'Node.js',
+			'Express.js',
+			'Prisma',
+			'PostgreSQL',
+			'MySQL',
+			'REST APIs',
+		],
+	},
+	{
+		label: 'DevOps & Cloud',
+		items: [
+			'Docker',
+			'Jenkins',
+			'CI/CD',
+			'AWS S3',
+			'Coolify',
+			'Traefik',
+			'SonarQube',
+		],
+	},
+	{
+		label: 'Testing & Tools',
+		items: ['Playwright', 'Postman', 'Git', 'Figma', 'Stripe'],
+	},
+];
