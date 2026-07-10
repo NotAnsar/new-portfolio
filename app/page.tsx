@@ -3,6 +3,7 @@ import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
 import ParticleBackground from '@/components/ParticleBackground';
 import LandingEffects from '@/components/LandingEffects';
+import HeroClock from '@/components/HeroClock';
 import SelectedWork from '@/components/SelectedWork';
 import ExperienceAccordion from '@/components/ExperienceAccordion';
 import EducationSection from '@/components/EducationSection';
@@ -44,42 +45,39 @@ export default function Home() {
 				<SiteHeader />
 
 				{/* Hero: full-viewport typographic */}
-				<section className='min-h-screen flex flex-col justify-center px-6 sm:px-10 relative'>
-					<div className='max-w-[1280px] mx-auto w-full flex flex-col items-center text-center'>
-						<div className='overflow-hidden'>
-							<div className='hero-line flex items-center gap-3.5 mb-7'>
-								<span className='w-9 h-px bg-(--ds-accent)' />
-								<p className='m-0 text-[13px] tracking-[0.3em] uppercase text-(--ds-accent) font-medium'>
-									Software Engineer
-								</p>
-								<span className='w-9 h-px bg-(--ds-accent)' />
-							</div>
-						</div>
-						<div className='overflow-hidden pb-[0.08em]'>
-							<h1 className='hero-line m-0 text-[clamp(56px,10vw,160px)] font-semibold tracking-[-0.03em] leading-[1.05] text-foreground'>
-								Ansar{' '}
-								<span className='font-serif italic font-normal tracking-[-0.02em]'>
-									Karrouach
-								</span>
-								<span className='text-(--ds-accent)'>.</span>
+				<section className='min-h-screen flex flex-col px-6 sm:px-10 relative'>
+					{/* Meta row above the name — location + live local time */}
+					<HeroClock />
+
+					{/* Name anchored low, left-aligned stack */}
+					<div className='w-full flex flex-col justify-end flex-1 pb-[11vh]'>
+						<div className='overflow-hidden pb-[0.04em]'>
+							<h1 className='hero-line m-0 font-display text-[clamp(40px,8.2vw,138px)] font-extrabold tracking-[-0.02em] leading-[0.95] uppercase text-foreground'>
+								Ansar
 							</h1>
 						</div>
-						<p className='hero-fade mt-7 mb-0 max-w-[480px] text-base leading-[1.7] text-(--ds-muted) font-sans'>
-							Turning ideas into fast, considered products with React, Next.js
-							and TypeScript. Master&apos;s in Big Data and IoT.
-						</p>
-						<div className='hero-fade flex items-center gap-2.5 px-[18px] py-[9px] border border-(--ds-accent-30) rounded-full mt-8'>
-							<span className='animate-pulse-dot w-[7px] h-[7px] rounded-full bg-[oklch(0.72_0.1_145)] [animation:pulse-dot_2s_infinite]' />
-							<span className='text-[13px] text-(--ds-fg-soft)'>
-								Open to opportunities
-							</span>
+						<div className='overflow-hidden pb-[0.08em]'>
+							<h1 className='hero-line m-0 font-display text-[clamp(40px,8.2vw,138px)] font-extrabold tracking-[-0.02em] leading-[0.95] uppercase text-foreground'>
+								Karrouach<span className='text-(--ds-accent)'>.</span>
+							</h1>
+						</div>
+						<div className='overflow-hidden'>
+							<p className='hero-line mt-3.5 mb-0 ml-1.5 text-[13px] tracking-[0.3em] uppercase text-(--ds-muted) font-medium'>
+								Frontend Developer
+								<span className='text-(--ds-accent) px-2'>·</span>
+								<span className='text-(--ds-muted2) tracking-[0.2em]'>
+									React · Next.js · TypeScript
+								</span>
+							</p>
 						</div>
 					</div>
-					<div className='hero-fade absolute bottom-8 left-6 right-6 sm:left-10 sm:right-10 flex justify-between items-end'>
-						<span className='inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-(--ds-muted2)'>
-							<span className='text-(--ds-accent)'>→</span> V2.0
+
+					<div className='hero-fade absolute bottom-7 left-6 right-6 sm:left-10 sm:right-10 flex justify-between items-end'>
+						<span className='inline-flex items-center gap-2.5 text-xs tracking-[0.15em] uppercase text-(--ds-muted)'>
+							<span className='animate-pulse-dot w-[7px] h-[7px] rounded-full bg-[oklch(0.72_0.1_145)] [animation:pulse-dot_2s_infinite]' />
+							Available for work
 						</span>
-						<div className='hidden sm:flex flex-col items-center gap-2 absolute left-1/2 -translate-x-1/2 bottom-0'>
+						<div className='hidden sm:flex flex-col items-center gap-2'>
 							<span className='text-[11px] tracking-[0.3em] uppercase text-(--ds-muted2)'>
 								Scroll
 							</span>

@@ -3,6 +3,7 @@ import {
 	Inter as FontSans,
 	Space_Grotesk as FontSecondary,
 	Instrument_Serif as FontSerif,
+	Syne as FontDisplay,
 } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
@@ -23,6 +24,11 @@ const fontSerif = FontSerif({
 	variable: '--font-serif',
 	weight: '400',
 	style: 'italic',
+});
+const fontDisplay = FontDisplay({
+	subsets: ['latin'],
+	variable: '--font-display',
+	weight: ['600', '700', '800'],
 });
 
 export const metadata: Metadata = {
@@ -66,7 +72,7 @@ export default function RootLayout({
 			<body
 				suppressHydrationWarning
 				className={cn(
-					`${fontSans.variable} ${fontSecondary.variable} ${fontSerif.variable} antialiased`,
+					`${fontSans.variable} ${fontSecondary.variable} ${fontSerif.variable} ${fontDisplay.variable} antialiased`,
 					'font-secondary bg-background text-foreground min-h-screen',
 				)}
 			>
