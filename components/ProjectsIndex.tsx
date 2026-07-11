@@ -49,6 +49,9 @@ export default function ProjectsIndex({
 
 	const filtered = projects.filter((p) => tab === 'all' || p.type === tab);
 	const count = String(filtered.length).padStart(2, '0');
+	// All covers stay mounted in the preview so they load once at mount and
+	// hover only toggles opacity — no refetch, no stale image from a prior row.
+	const covers = Array.from(new Set(projects.map((p) => p.cover)));
 
 	// Mount: hero reveals, scroll progress, cursor-follow preview
 	useEffect(() => {
@@ -189,15 +192,19 @@ export default function ProjectsIndex({
 				aria-hidden
 				className='fixed top-0 left-0 w-[400px] h-[250px] z-40 pointer-events-none opacity-0 overflow-hidden rounded-[10px] border border-(--ds-border-3) shadow-[0_24px_60px_oklch(0_0_0/55%)] hidden lg:block'
 			>
-				{previewSrc && (
+				{covers.map((src) => (
 					<Image
-						src={previewSrc}
+						key={src}
+						src={src}
 						alt=''
 						fill
 						sizes='400px'
-						className='object-cover object-top'
+						className={cn(
+							'object-cover object-top transition-opacity duration-150',
+							previewSrc === src ? 'opacity-100' : 'opacity-0'
+						)}
 					/>
-				)}
+				))}
 			</div>
 
 			{/* Page hero */}
