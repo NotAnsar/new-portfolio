@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
-import ParticleBackground from '@/components/ParticleBackground';
+import ParticleBackground from '@/components/ParticleBackgroundLazy';
 import ProjectDetailEffects from '@/components/ProjectDetailEffects';
 import { projects } from '@/config/project';
 

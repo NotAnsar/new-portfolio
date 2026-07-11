@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
-import ParticleBackground from '@/components/ParticleBackground';
+import ParticleBackground from '@/components/ParticleBackgroundLazy';
 import LandingEffects from '@/components/LandingEffects';
 import HeroClock from '@/components/HeroClock';
+import Preloader from '@/components/Preloader';
 import SelectedWork from '@/components/SelectedWork';
 import ExperienceAccordion from '@/components/ExperienceAccordion';
 import EducationSection from '@/components/EducationSection';
@@ -34,6 +35,7 @@ export default function Home() {
 
 	return (
 		<div className='min-h-screen bg-background text-foreground overflow-x-hidden'>
+			<Preloader />
 			<ParticleBackground
 				particleCount={500}
 				particleOpacity={0.55}

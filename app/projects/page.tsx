@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
-import ParticleBackground from '@/components/ParticleBackground';
+import ParticleBackground from '@/components/ParticleBackgroundLazy';
 import ProjectsIndex from '@/components/ProjectsIndex';
 import { projects, tabs } from '@/config/project';
 

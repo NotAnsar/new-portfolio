@@ -7,6 +7,7 @@ import {
 } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
+import NavigationTracker from '@/components/NavigationTracker';
 import { cn } from '@/lib/utils';
 import { Toaster } from 'sonner';
 
@@ -83,6 +84,7 @@ export default function RootLayout({
 					disableTransitionOnChange
 				>
 					{children}
+					<NavigationTracker />
 					<Toaster />
 				</ThemeProvider>
 			</body>

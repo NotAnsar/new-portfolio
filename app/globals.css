@@ -169,6 +169,34 @@ html {
 	color: var(--foreground);
 }
 
+/* First-paint state for the hero entrance: SSR HTML would otherwise flash
+   fully visible before hydration, then snap to hidden when GSAP applies its
+   from-state. visibility (not transform!) so it can't combine with GSAP's
+   yPercent — GSAP un-hides inline at the same instant it sets the from-state. */
+@media (prefers-reduced-motion: no-preference) {
+	.hero-line,
+	.hero-fade {
+		visibility: hidden;
+	}
+
+	/* The preloader bar starts filling in pure CSS at first paint (before JS
+	   loads); GSAP measures the computed scaleX at hydration, kills this
+	   animation and continues from that value — no backward jump. */
+	.preloader-bar {
+		animation: preloader-preflight 1.2s cubic-bezier(0.33, 1, 0.68, 1)
+			forwards;
+	}
+}
+
+@keyframes preloader-preflight {
+	from {
+		transform: scaleX(0);
+	}
+	to {
+		transform: scaleX(0.35);
+	}
+}
+
 @keyframes pulse-dot {
 	0%,
 	100% {
