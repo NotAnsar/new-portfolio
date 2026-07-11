@@ -65,7 +65,7 @@ export default function Home() {
 						</div>
 						<div className='overflow-hidden'>
 							<p className='hero-line mt-3.5 mb-0 ml-1.5 text-[13px] tracking-[0.3em] uppercase text-(--ds-muted) font-medium'>
-								Frontend Developer
+								Software Engineer
 								<span className='text-(--ds-accent) px-2'>·</span>
 								<span className='text-(--ds-muted2) tracking-[0.2em]'>
 									React · Next.js · TypeScript
